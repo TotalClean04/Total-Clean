@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TotalClean LLC | Water Mitigation & Mold Remediation</title>
+  <meta
+    name="description"
+    content="TotalClean LLC provides water mitigation, mold remediation, biohazard cleanup, and fire cleanup with fast response and professional documentation."
+  />
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --bg-soft:#141417;
+      --card:#17181c;
+      --text:#f5f5f7;
+      --muted:#b0b3bb;
+      --line:rgba(255,255,255,.08);
+      --red:#d61f26;
+      --red-soft:rgba(214,31,38,.12);
+      --gray:#8d9199;
+      --white:#ffffff;
+      --radius:20px;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(214,31,38,.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(255,255,255,.04), transparent 20%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(calc(100% - 2rem), var(--max)); margin:0 auto}
+    .section{padding:88px 0}
+    .section-sm{padding:56px 0}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(14px);
+      background:rgba(11,11,13,.72);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      min-height:76px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.85rem;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg, var(--red), #7e0e12);
+      display:grid;
+      place-items:center;
+      box-shadow:0 8px 24px rgba(214,31,38,.35);
+      font-weight:800;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:1.1rem;
+      align-items:center;
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    .nav-links a:hover{color:var(--white)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.6rem;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      transition:.24s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--red);
+      color:var(--white);
+      box-shadow:0 12px 28px rgba(214,31,38,.28);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.05);
+    }
+
+    .btn-secondary{
+      border-color:var(--line);
+      background:rgba(255,255,255,.02);
+      color:var(--white);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.05);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:88px 0 56px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:2rem;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:.55rem;
+      align-items:center;
+      padding:8px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.02);
+      font-size:.86rem;
+      margin-bottom:1rem;
+    }
+
+    h1,h2,h3{
+      line-height:1.06;
+      margin:0 0 1rem;
+      letter-spacing:-.03em;
+    }
+
+    h1{
+      font-size:clamp(2.4rem, 5vw, 5.2rem);
+      max-width:11ch;
+    }
+
+    h2{
+      font-size:clamp(1.9rem, 3vw, 3.2rem);
+      max-width:12ch;
+    }
+
+    h3{
+      font-size:1.18rem;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      color:var(--muted);
+      max-width:60ch;
+      margin-bottom:1.4rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem;
+      margin:1.6rem 0 1.4rem;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .point{
+      padding:1rem;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      border-radius:18px;
+    }
+
+    .point strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:.25rem;
+    }
+
+    .hero-card{
+      position:relative;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        var(--card);
+      border-radius:28px;
+      padding:1.2rem;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -30% auto;
+      width:220px;
+      height:220px;
+      background:radial-gradient(circle, rgba(214,31,38,.25), transparent 68%);
+      pointer-events:none;
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .metric{
+      padding:1rem;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .metric span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+      margin-bottom:.45rem;
+    }
+
+    .metric strong{
+      font-size:1.5rem;
+    }
+
+    .grid-4, .grid-3{
+      display:grid;
+      gap:1rem;
+    }
+
+    .grid-4{grid-template-columns:repeat(4, minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      border-radius:24px;
+      padding:1.3rem;
+      transition:.28s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+    }
+
+    .card-icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:var(--red-soft);
+      color:#ff6469;
+      margin-bottom:1rem;
+      border:1px solid rgba(214,31,38,.2);
+      font-size:1.15rem;
+    }
+
+    .muted{color:var(--muted)}
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.3rem;
+      align-items:start;
+    }
+
+    .list{
+      display:grid;
+      gap:.8rem;
+      margin-top:1.2rem;
+    }
+
+    .list-item{
+      display:flex;
+      gap:.8rem;
+      align-items:flex-start;
+      padding:1rem;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .list-bullet{
+      flex:0 0 28px;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      background:var(--red-soft);
+      border:1px solid rgba(214,31,38,.2);
+      display:grid;
+      place-items:center;
+      color:#ff6469;
+      font-size:.9rem;
+      margin-top:.1rem;
+    }
+
+    .band{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius:30px;
+      padding:1.4rem;
+      box-shadow:var(--shadow);
+    }
+
+    .testimonial{
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+    }
+
+    .quote{
+      font-size:1.04rem;
+      color:#e9eaee;
+    }
+
+    .person{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    form{
+      display:grid;
+      gap:.95rem;
+      margin-top:1rem;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.95rem;
+    }
+
+    input, select, textarea{
+      width:100%;
+      background:#111216;
+      color:var(--white);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:15px 16px;
+      font:inherit;
+      outline:none;
+      transition:border-color .2s ease, background .2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(214,31,38,.55);
+      background:#15161b;
+    }
+
+    textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    .contact-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.9rem 1rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+    }
+
+    .faq{
+      display:grid;
+      gap:1rem;
+    }
+
+    details{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:1rem 1rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+    }
+
+    summary::-webkit-details-marker{display:none}
+    details p{color:var(--muted); margin:.8rem 0 0}
+
+    footer{
+      padding:38px 0 80px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .sticky-call{
+      position:fixed;
+      left:1rem;
+      right:1rem;
+      bottom:1rem;
+      z-index:1001;
+      display:none;
+      box-shadow:0 18px 38px rgba(0,0,0,.35);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .split,
+      .grid-4,
+      .grid-3,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media (max-width: 720px){
+      .section{padding:72px 0}
+      .hero{padding:58px 0 32px}
+      .sticky-call{display:block}
+      footer{padding-bottom:110px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="logo">TC</div>
+        <div>
+          <div>TotalClean LLC</div>
+          <div style="font-size:.82rem;color:var(--muted);font-weight:500;">Water Mitigation & Mold Remediation</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#insurance">Insurance</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary">Request Help</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Fast response • Clear documentation • Professional service</div>
+        <h1>Premium remediation, built for real emergencies.</h1>
+        <p class="lead">
+          TotalClean LLC helps homeowners, property managers, and insurance-related contacts with
+          water mitigation, mold remediation, biohazard cleanup, and fire / smoke cleanup through
+          a clean, responsive, professional process.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Request Help Now</a>
+          <a class="btn btn-secondary" href="tel:7867686649">Call 786-768-6649</a>
+        </div>
+
+        <div class="hero-points">
+          <div class="point">
+            <strong>Water Mitigation</strong>
+            <span class="muted">Fast drying, equipment setup, and documentation.</span>
+          </div>
+          <div class="point">
+            <strong>Mold Remediation</strong>
+            <span class="muted">Targeted cleanup with a clean, professional process.</span>
+          </div>
+          <div class="point">
+            <strong>Insurance-Friendly</strong>
+            <span class="muted">Clear reporting, photos, and organized communication.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+          <div>
+            <div style="font-size:.9rem;color:var(--muted);margin-bottom:.3rem;">Emergency Service Request</div>
+            <div style="font-weight:800;font-size:1.4rem;">Need help now?</div>
+          </div>
+          <div class="logo" style="width:52px;height:52px;">TC</div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <span>Primary Service</span>
+            <strong>Water</strong>
+          </div>
+          <div class="metric">
+            <span>Primary Service</span>
+            <strong>Mold</strong>
+          </div>
+          <div class="metric">
+            <span>Contact</span>
+            <strong style="font-size:1.08rem;">786-768-6649</strong>
+          </div>
+          <div class="metric">
+            <span>Email</span>
+            <strong style="font-size:1.02rem;">totalclean@gmail.com</strong>
+          </div>
+        </div>
+
+        <div class="list" style="margin-top:1rem;">
+          <div class="list-item">
+            <div class="list-bullet">✓</div>
+            <div>
+              <strong>Simple intake</strong>
+              <div class="muted">Quick contact options for homeowners, adjusters, and partners.</div>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="list-bullet">✓</div>
+            <div>
+              <strong>Professional documentation</strong>
+              <div class="muted">Structured reports, photos, and scope communication.</div>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="list-bullet">✓</div>
+            <div>
+              <strong>Built for mobile</strong>
+              <div class="muted">Fast, light, and easy to use during urgent situations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="section">
+    <div class="container">
+      <div class="reveal">
+        <h2>Core services designed to solve urgent problems fast.</h2>
+        <p class="lead">
+          Clean layout, direct messaging, and simple actions matter. People should understand what
+          you do within seconds and know exactly how to contact you.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card reveal">
+          <div class="card-icon">💧</div>
+          <h3>Water Mitigation</h3>
+          <p class="muted">
+            Extraction, drying support, equipment setup, and structured documentation for affected areas.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">🦠</div>
+          <h3>Mold Remediation</h3>
+          <p class="muted">
+            Remediation-focused service with a clean process, careful communication, and clear reporting.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">⚠️</div>
+          <h3>Biohazard Cleanup</h3>
+          <p class="muted">
+            Sensitive cleanup handled with professionalism, discretion, and safety-oriented processes.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">🔥</div>
+          <h3>Fire / Smoke Cleanup</h3>
+          <p class="muted">
+            Cleanup support after fire and smoke damage with organized scope communication and follow-through.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="insurance" class="section-sm">
+    <div class="container">
+      <div class="band reveal">
+        <div class="split">
+          <div>
+            <h2>Built to look credible to insurance-related contacts too.</h2>
+            <p class="lead">
+              Homeowners need confidence. Insurance-related contacts need clarity. Your site should communicate both.
+            </p>
+          </div>
+          <div class="list">
+            <div class="list-item">
+              <div class="list-bullet">1</div>
+              <div>
+                <strong>Clear documentation</strong>
+                <div class="muted">Photos, structured reporting, and organized communication.</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-bullet">2</div>
+              <div>
+                <strong>Professional scope presentation</strong>
+                <div class="muted">A simple, polished website builds confidence before anyone even calls.</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-bullet">3</div>
+              <div>
+                <strong>Fast response paths</strong>
+                <div class="muted">Phone, form, and straightforward contact flow without friction.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container split">
+      <div class="reveal">
+        <h2>A modern remediation brand with a clean, sharp presentation.</h2>
+        <p class="lead">
+          TotalClean LLC is positioned as a responsive, detail-focused service company built around
+          trust, communication, and a professional customer experience.
+        </p>
+        <p class="muted">
+          This starter site is intentionally lightweight. It keeps the visual polish high while
+          avoiding heavy effects that slow down performance. That balance is what makes premium
+          websites feel modern without feeling bloated.
+        </p>
+      </div>
+
+      <div class="grid-3 reveal">
+        <div class="card">
+          <h3>Fast</h3>
+          <p class="muted">Optimized for quick loading and simple emergency contact flow.</p>
+        </div>
+        <div class="card">
+          <h3>Professional</h3>
+          <p class="muted">Designed to feel credible to homeowners and industry partners.</p>
+        </div>
+        <div class="card">
+          <h3>Simple</h3>
+          <p class="muted">Minimal structure, strong hierarchy, and easy navigation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="reveal">
+        <h2>What people should feel when they land here.</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card testimonial reveal">
+          <div class="quote">“This looks organized, modern, and easy to trust.”</div>
+          <div class="person">Ideal first impression for homeowners</div>
+        </div>
+        <div class="card testimonial reveal">
+          <div class="quote">“I can contact them fast without hunting around.”</div>
+          <div class="person">Ideal first impression for urgent visitors</div>
+        </div>
+        <div class="card testimonial reveal">
+          <div class="quote">“This company presents itself professionally.”</div>
+          <div class="person">Ideal first impression for adjusters and partners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container split">
+      <div class="reveal">
+        <h2>Simple answers to common questions.</h2>
+        <p class="lead">
+          FAQs reduce hesitation and help users move faster toward calling or submitting a request.
+        </p>
+      </div>
+
+      <div class="faq reveal">
+        <details open>
+          <summary>What services does TotalClean LLC provide?</summary>
+          <p>Water mitigation, mold remediation, biohazard cleanup, and fire / smoke cleanup.</p>
+        </details>
+        <details>
+          <summary>Can this site work for Google Ads traffic?</summary>
+          <p>Yes. It is structured like a lead-generation landing site with clear calls to action and a simple contact flow.</p>
+        </details>
+        <details>
+          <summary>Can I add my real logo later?</summary>
+          <p>Yes. Replace the temporary “TC” logo blocks with your uploaded TotalClean logo image.</p>
+        </details>
+        <details>
+          <summary>Can I connect this form to email or a CRM?</summary>
+          <p>Yes. Right now this is front-end only. The form can be connected to Formspree, Netlify Forms, EmailJS, Zapier, HubSpot, or a custom backend.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container split">
+      <div class="reveal">
+        <h2>Request help or start the conversation.</h2>
+        <p class="lead">
+          Make it easy for homeowners, insurance-related contacts, and referral partners to reach you.
+        </p>
+
+        <div class="contact-pills">
+          <a class="pill" href="tel:7867686649">📞 786-768-6649</a>
+          <a class="pill" href="tel:7865689650">📞 786-568-9650</a>
+          <a class="pill" href="mailto:totalclean@gmail.com">✉️ totalclean@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 style="margin-bottom:.35rem;">Request Service</h3>
+        <p class="muted" style="margin-top:0;">This form is front-end only for now. Connect it to your preferred form handler later.</p>
+
+        <form>
+          <div class="form-grid">
+            <input type="text" name="name" placeholder="Full name" />
+            <input type="tel" name="phone" placeholder="Phone number" />
+          </div>
+
+          <div class="form-grid">
+            <input type="email" name="email" placeholder="Email address" />
+            <input type="text" name="address" placeholder="Property address" />
+          </div>
+
+          <div class="form-grid">
+            <select name="service">
+              <option value="">Service needed</option>
+              <option>Water Mitigation</option>
+              <option>Mold Remediation</option>
+              <option>Biohazard Cleanup</option>
+              <option>Fire / Smoke Cleanup</option>
+            </select>
+
+            <select name="contactType">
+              <option value="">I am a...</option>
+              <option>Homeowner</option>
+              <option>Insurance Rep / Adjuster</option>
+              <option>Property Manager</option>
+              <option>Commercial Client</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <select name="urgency">
+            <option value="">Urgency level</option>
+            <option>Emergency / ASAP</option>
+            <option>Today</option>
+            <option>This week</option>
+            <option>General inquiry</option>
+          </select>
+
+          <textarea name="message" placeholder="Tell us what happened..."></textarea>
+
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>TotalClean LLC</strong><br />
+        Water Mitigation • Mold Remediation • Biohazard • Fire Cleanup
+      </div>
+      <div>
+        786-768-6649 / 786-568-9650 • totalclean@gmail.com
+      </div>
+    </div>
+  </footer>
+
+  <a class="btn btn-primary sticky-call" href="tel:7867686649">Call Now • 786-768-6649</a>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Demo form handler
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Form submitted. Next step: connect this form to email, a CRM, or a backend.");
+    });
+  </script>
+</body>
+</html>
