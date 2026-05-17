@@ -11,7 +11,7 @@
     content="TotalClean LLC provides emergency restoration services including water mitigation, mold remediation, fire cleanup, and biohazard cleanup."
   />
 
-  <link rel="icon" href="images/logo.png?v=4" />
+  <link rel="icon" href="images/logo.png?v=5" />
 
   <style>
     :root{
@@ -438,21 +438,87 @@
       margin:.8rem 0 0;
     }
 
-    .work-image-card{
+    .inspection-gallery{
+      position:relative;
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:28px;
       overflow:hidden;
       background:rgba(255,255,255,.02);
-      min-height:360px;
-      display:grid;
-      place-items:center;
+      min-height:430px;
+      box-shadow:var(--shadow);
     }
 
-    .work-image-card img{
+    .inspection-track{
+      display:flex;
+      height:430px;
+      transition:transform .75s cubic-bezier(.22,1,.36,1);
+    }
+
+    .inspection-slide{
+      min-width:100%;
+      position:relative;
+    }
+
+    .inspection-slide img{
       width:100%;
       height:100%;
-      min-height:360px;
       object-fit:cover;
+    }
+
+    .inspection-slide::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, transparent 45%, rgba(0,0,0,.75));
+      pointer-events:none;
+    }
+
+    .inspection-caption{
+      position:absolute;
+      left:1rem;
+      right:1rem;
+      bottom:1rem;
+      z-index:2;
+      padding:1rem;
+      border-radius:18px;
+      background:rgba(0,0,0,.38);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .inspection-caption strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:.25rem;
+    }
+
+    .inspection-caption span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .gallery-dots{
+      position:absolute;
+      top:1rem;
+      right:1rem;
+      z-index:3;
+      display:flex;
+      gap:.45rem;
+    }
+
+    .gallery-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.28);
+      border:none;
+      padding:0;
+      cursor:pointer;
+    }
+
+    .gallery-dot.active{
+      width:22px;
+      background:var(--red);
     }
 
     .work-gallery{
@@ -545,6 +611,14 @@
         width:78px;
         height:78px;
       }
+
+      .inspection-gallery{
+        min-height:340px;
+      }
+
+      .inspection-track{
+        height:340px;
+      }
     }
   </style>
 </head>
@@ -554,7 +628,7 @@
   <div class="topbar">
     <div class="container nav">
       <a href="#" class="brand">
-        <img src="images/logo.png?v=4" alt="TotalClean LLC Logo" class="logo">
+        <img src="images/logo.png?v=5" alt="TotalClean LLC Logo" class="logo">
 
         <div class="brand-name">
           <div>TotalClean LLC</div>
@@ -625,7 +699,7 @@
             </div>
           </div>
 
-          <img src="images/logo.png?v=4" alt="TotalClean LLC Logo" class="hero-logo">
+          <img src="images/logo.png?v=5" alt="TotalClean LLC Logo" class="hero-logo">
         </div>
 
         <div class="metric-grid">
@@ -792,8 +866,47 @@
         </p>
       </div>
 
-      <div class="work-image-card reveal">
-        <img src="images/work-photo.jpg" alt="TotalClean restoration work photo">
+      <div class="inspection-gallery reveal" aria-label="Past inspection photo gallery">
+        <div class="gallery-dots">
+          <button class="gallery-dot active" aria-label="Show inspection photo 1"></button>
+          <button class="gallery-dot" aria-label="Show inspection photo 2"></button>
+          <button class="gallery-dot" aria-label="Show inspection photo 3"></button>
+          <button class="gallery-dot" aria-label="Show inspection photo 4"></button>
+        </div>
+
+        <div class="inspection-track">
+          <div class="inspection-slide">
+            <img src="images/inspection-1.jpg" alt="TotalClean inspection photo 1">
+            <div class="inspection-caption">
+              <strong>Inspection Documentation</strong>
+              <span>Photos help identify affected areas and support a clear service plan.</span>
+            </div>
+          </div>
+
+          <div class="inspection-slide">
+            <img src="images/inspection-2.jpg" alt="TotalClean inspection photo 2">
+            <div class="inspection-caption">
+              <strong>Moisture & Damage Review</strong>
+              <span>We focus on clean communication and organized findings.</span>
+            </div>
+          </div>
+
+          <div class="inspection-slide">
+            <img src="images/inspection-3.jpg" alt="TotalClean inspection photo 3">
+            <div class="inspection-caption">
+              <strong>Work Area Assessment</strong>
+              <span>Every job starts with understanding the affected space.</span>
+            </div>
+          </div>
+
+          <div class="inspection-slide">
+            <img src="images/inspection-4.jpg" alt="TotalClean inspection photo 4">
+            <div class="inspection-caption">
+              <strong>Professional Process</strong>
+              <span>Clear photos, notes, and communication from start to finish.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1027,6 +1140,28 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const track = document.querySelector(".inspection-track");
+    const dots = document.querySelectorAll(".gallery-dot");
+    let currentSlide = 0;
+
+    function showSlide(index){
+      currentSlide = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === index);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => showSlide(index));
+    });
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % dots.length;
+      showSlide(currentSlide);
+    }, 4200);
 
     const form = document.querySelector("form");
 
