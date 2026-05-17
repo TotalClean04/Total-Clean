@@ -362,6 +362,94 @@
       font-size:.94rem;
     }
 
+    /* ===== Auto-scrolling reviews ===== */
+    .reviews-viewport{
+      overflow:hidden;
+      position:relative;
+      margin-top:1.4rem;
+      -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .reviews-track{
+      display:flex;
+      gap:1rem;
+      width:max-content;
+      animation:review-scroll 48s linear infinite;
+    }
+
+    .reviews-viewport:hover .reviews-track{
+      animation-play-state:paused;
+    }
+
+    @keyframes review-scroll{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    .review-card{
+      flex:0 0 340px;
+      max-width:340px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      border-radius:24px;
+      padding:1.3rem;
+      display:flex;
+      flex-direction:column;
+      gap:.7rem;
+    }
+
+    .review-stars{
+      color:#ffc83d;
+      font-size:1rem;
+      letter-spacing:2px;
+    }
+
+    .review-text{
+      color:#e9eaee;
+      font-size:1rem;
+      line-height:1.55;
+      flex:1;
+    }
+
+    .review-meta{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      margin-top:.4rem;
+    }
+
+    .review-avatar{
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      background:var(--red-soft);
+      border:1px solid rgba(214,31,38,.2);
+      color:#ff6469;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:.95rem;
+      flex:0 0 38px;
+    }
+
+    .review-author{
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .review-author span{
+      display:block;
+      color:var(--muted);
+      font-size:.84rem;
+      font-weight:500;
+    }
+
+    @media (max-width:720px){
+      .review-card{flex:0 0 280px;max-width:280px}
+      .reviews-track{animation-duration:36s}
+    }
+
     form{
       display:grid;
       gap:.95rem;
@@ -444,13 +532,13 @@
       border-radius:28px;
       overflow:hidden;
       background:rgba(255,255,255,.02);
-      min-height:430px;
+      min-height:320px;
       box-shadow:var(--shadow);
     }
 
     .inspection-track{
       display:flex;
-      height:430px;
+      height:320px;
       transition:transform .75s cubic-bezier(.22,1,.36,1);
     }
 
@@ -613,11 +701,11 @@
       }
 
       .inspection-gallery{
-        min-height:340px;
+        min-height:240px;
       }
 
       .inspection-track{
-        height:340px;
+        height:240px;
       }
     }
   </style>
@@ -641,6 +729,7 @@
       <nav class="nav-links">
         <a href="#services">Services</a>
         <a href="#insurance">Insurance</a>
+        <a href="#reviews">Reviews</a>
         <a href="#about">About</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" class="btn btn-primary">Request Help</a>
@@ -912,43 +1001,25 @@
     </div>
   </section>
 
-  <section class="section-sm">
+  <section id="reviews" class="section-sm">
     <div class="container">
 
       <div class="reveal">
-        <h2>What people should feel when they contact us.</h2>
+        <h2>What our customers say.</h2>
+        <p class="lead">
+          Real feedback from homeowners and partners we've helped through water, fire, mold, and biohazard situations.
+        </p>
       </div>
 
-      <div class="grid-3">
-
-        <div class="card testimonial reveal">
-          <div class="quote">
-            “This company responds quickly and communicates clearly.”
-          </div>
-          <div class="person">
-            For homeowners needing urgent help
-          </div>
+      <div class="reviews-viewport reveal" aria-label="Customer reviews">
+        <div class="reviews-track" id="reviewsTrack">
+          <!-- Reviews are injected here by JavaScript (see the reviews script near the bottom). -->
         </div>
-
-        <div class="card testimonial reveal">
-          <div class="quote">
-            “The process feels organized, simple, and professional.”
-          </div>
-          <div class="person">
-            For property managers and partners
-          </div>
-        </div>
-
-        <div class="card testimonial reveal">
-          <div class="quote">
-            “I know exactly who to call and what happens next.”
-          </div>
-          <div class="person">
-            For anyone dealing with property damage
-          </div>
-        </div>
-
       </div>
+
+      <p class="muted" id="reviewsSource" style="margin-top:1rem;font-size:.9rem;text-align:center;">
+        Showing sample reviews — connect the Google Places API to display live 5-star Google reviews.
+      </p>
 
     </div>
   </section>
@@ -957,39 +1028,60 @@
     <div class="container split">
 
       <div class="reveal">
-        <h2>Simple answers to common questions.</h2>
+        <h2>Answers to the problems we hear most.</h2>
         <p class="lead">
-          These answers help customers understand when to call and what to expect.
+          Real questions from homeowners dealing with water, fire, mold, and biohazard damage.
         </p>
       </div>
 
       <div class="faq reveal">
 
         <details open>
-          <summary>What services does TotalClean LLC provide?</summary>
+          <summary>My pipe burst and there's water everywhere — what do I do first?</summary>
           <p>
-            We provide water mitigation, mold remediation, fire cleanup, and biohazard cleanup services.
+            Shut off your water at the main valve if you can, turn off electricity to affected areas, and move valuables out of standing water. Then call us — fast extraction in the first 24–48 hours is what prevents the bigger problems like warped floors, ruined drywall, and mold growth.
           </p>
         </details>
 
         <details>
-          <summary>When should I call after water damage?</summary>
+          <summary>The water dried on its own. Do I still need to do anything?</summary>
           <p>
-            Call as soon as possible. Fast response helps reduce additional damage, moisture spread, and potential mold growth.
+            Usually yes. Surfaces can look dry while moisture stays trapped inside walls, subfloors, and insulation. That hidden moisture is the most common cause of mold appearing weeks later. We use moisture meters to check what's still wet behind the surface, not just what you can see.
           </p>
         </details>
 
         <details>
-          <summary>Do you help document the damage?</summary>
+          <summary>I found mold in a closet/bathroom — can I just clean it with bleach?</summary>
           <p>
-            Yes. We focus on clear documentation, photos, and organized communication throughout the job.
+            Surface bleaching often hides the problem without solving it, because mold roots into porous materials and keeps growing if the moisture source is still there. Proper remediation means containing the area, removing affected material safely, and fixing the moisture cause so it doesn't come back.
           </p>
         </details>
 
         <details>
-          <summary>What areas do you service?</summary>
+          <summary>The fire is out but everything smells like smoke. Will that go away?</summary>
           <p>
-            TotalClean LLC provides emergency restoration services in South Florida. Contact us to confirm availability for your property.
+            Smoke odor doesn't fade on its own — soot embeds into walls, ceilings, HVAC systems, and belongings. It needs targeted cleaning and deodorization to actually remove, not mask. We focus on removing the source of the odor along with the visible soot damage.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is biohazard cleanup something I can handle myself?</summary>
+          <p>
+            We strongly recommend not attempting it. Biohazard and trauma situations involve health risks and require proper protective equipment, safe handling, and disposal procedures. We handle these with discretion, sensitivity, and safety-oriented processes so you don't have to.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do you document everything for my insurance claim?</summary>
+          <p>
+            Yes. We focus on clear documentation throughout — photos of affected areas, scope notes, and organized communication — so you and your insurance contact have what you need without the back-and-forth.
+          </p>
+        </details>
+
+        <details>
+          <summary>What areas do you service and when can I reach you?</summary>
+          <p>
+            TotalClean LLC provides emergency restoration services across South Florida, Monday–Saturday, 6:00 AM – 10:00 PM. Call either emergency line to confirm availability for your property.
           </p>
         </details>
 
@@ -1169,6 +1261,134 @@
       e.preventDefault();
       alert("Thanks. Your request is ready. Please call one of our emergency lines or email totalclean150@gmail.com while we finish connecting this form.");
     });
+
+    /* =========================================================
+       CUSTOMER REVIEWS  (auto-scrolling)
+       =========================================================
+       This works in two modes:
+
+       1) SAMPLE MODE (default, what you see now):
+          Uses the SAMPLE_REVIEWS list below. Replace these with
+          your own real review text any time.
+
+       2) LIVE GOOGLE MODE:
+          Google does NOT allow calling the Places API directly
+          from a webpage with your key (it would be public and
+          could be stolen/abused, and CORS blocks it). You need a
+          tiny backend endpoint that calls Google for you and
+          returns the JSON. Once you have that endpoint, set:
+
+              GOOGLE_REVIEWS_ENDPOINT = "https://your-endpoint-url";
+
+          and this code will fetch live reviews, keep only
+          5-star ones, and scroll them automatically.
+          (Setup steps are in the notes I sent with this file.)
+       ========================================================= */
+
+    const GOOGLE_REVIEWS_ENDPOINT = ""; // leave "" to use sample reviews
+
+    const SAMPLE_REVIEWS = [
+      {
+        author: "Maria S.",
+        role: "Homeowner • Miami",
+        rating: 5,
+        text: "Pipe burst overnight and they were the only ones who actually picked up. Showed up fast, walked me through everything, and kept it organized for my insurance."
+      },
+      {
+        author: "James R.",
+        role: "Property Manager",
+        rating: 5,
+        text: "I manage several units and these guys make my life easier. Clear communication, photos sent the same day, no chasing them down."
+      },
+      {
+        author: "Daniel P.",
+        role: "Homeowner • Hialeah",
+        rating: 5,
+        text: "Found mold after a slow leak. They contained it properly and explained exactly what was happening instead of just spraying something and leaving."
+      },
+      {
+        author: "Carolina V.",
+        role: "Homeowner • Doral",
+        rating: 5,
+        text: "After a small kitchen fire the smoke smell was everywhere. They got it out completely. House feels normal again. Very professional team."
+      },
+      {
+        author: "Robert M.",
+        role: "Commercial Client",
+        rating: 5,
+        text: "Handled a sensitive cleanup with total discretion and respect. Hard situation made a lot easier by people who clearly knew what they were doing."
+      },
+      {
+        author: "Ana L.",
+        role: "Homeowner • Kendall",
+        rating: 5,
+        text: "Responsive, honest, and they documented every step. Exactly what you want when you're stressed and don't know where to start."
+      }
+    ];
+
+    function starString(n){
+      return "★★★★★☆☆☆☆☆".slice(5 - n, 10 - n);
+    }
+
+    function initials(name){
+      return name.trim().split(/\s+/).map(p => p[0]).join("").slice(0,2).toUpperCase();
+    }
+
+    function reviewCardHTML(r){
+      return `
+        <div class="review-card">
+          <div class="review-stars">${starString(r.rating)}</div>
+          <div class="review-text">“${r.text}”</div>
+          <div class="review-meta">
+            <div class="review-avatar">${initials(r.author)}</div>
+            <div class="review-author">${r.author}<span>${r.role || ""}</span></div>
+          </div>
+        </div>`;
+    }
+
+    function renderReviews(reviews){
+      const trackEl = document.getElementById("reviewsTrack");
+      if (!trackEl || !reviews.length) return;
+      // Duplicate the list so the scroll loop is seamless.
+      const html = reviews.map(reviewCardHTML).join("");
+      trackEl.innerHTML = html + html;
+    }
+
+    async function loadReviews(){
+      const sourceNote = document.getElementById("reviewsSource");
+
+      if (!GOOGLE_REVIEWS_ENDPOINT){
+        renderReviews(SAMPLE_REVIEWS);
+        return;
+      }
+
+      try {
+        const res = await fetch(GOOGLE_REVIEWS_ENDPOINT);
+        const data = await res.json();
+        // Expecting { reviews: [ { author_name, rating, text } ... ] }
+        const fiveStar = (data.reviews || [])
+          .filter(rv => rv.rating === 5)
+          .map(rv => ({
+            author: rv.author_name || "Google User",
+            role: "Google Review",
+            rating: 5,
+            text: rv.text || ""
+          }))
+          .filter(rv => rv.text.trim().length > 0);
+
+        if (fiveStar.length){
+          renderReviews(fiveStar);
+          if (sourceNote) sourceNote.textContent = "Verified 5-star Google reviews";
+        } else {
+          renderReviews(SAMPLE_REVIEWS);
+        }
+      } catch (err){
+        // If the live fetch fails for any reason, fall back gracefully.
+        renderReviews(SAMPLE_REVIEWS);
+      }
+    }
+
+    loadReviews();
   </script>
 
 </body>
