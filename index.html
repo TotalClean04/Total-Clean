@@ -613,6 +613,7 @@
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:1rem;
+      margin-top:1.6rem;
     }
 
     .work-photo{
@@ -620,8 +621,25 @@
       border:1px solid var(--line);
       border-radius:24px;
       overflow:hidden;
-      background:rgba(255,255,255,.02);
-      min-height:280px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        var(--card);
+      aspect-ratio:4/3;
+      min-height:240px;
+    }
+
+    /* Placeholder shown behind the image (visible if the image is
+       missing/not uploaded yet). Real photo sits on top of it. */
+    .work-photo::after{
+      content:"Photo coming soon";
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      color:var(--muted);
+      font-size:.92rem;
+      letter-spacing:.3px;
+      z-index:0;
     }
 
     .work-label{
@@ -632,15 +650,15 @@
       display:inline-flex;
       align-items:center;
       gap:.45rem;
-      padding:.5rem .85rem;
+      padding:.5rem .9rem;
       border-radius:999px;
-      font-size:.82rem;
+      font-size:.85rem;
       font-weight:700;
-      letter-spacing:.2px;
+      letter-spacing:.3px;
       color:var(--white);
-      background:rgba(11,11,13,.6);
+      background:rgba(11,11,13,.65);
       backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
     }
 
     .work-label::before{
@@ -652,10 +670,12 @@
     }
 
     .work-photo img{
+      position:absolute;
+      inset:0;
       width:100%;
       height:100%;
-      min-height:280px;
       object-fit:cover;
+      z-index:1;
     }
 
     footer{
@@ -1130,24 +1150,24 @@
 
       <div class="work-gallery">
 
-        <div class="work-photo reveal">
+        <div class="work-photo">
           <span class="work-label">Water</span>
-          <img src="images/work-photo-1.jpg" alt="TotalClean water mitigation work photo">
+          <img src="images/work-photo-1.jpg" alt="TotalClean water damage work photo" onerror="this.style.display='none'">
         </div>
 
-        <div class="work-photo reveal">
+        <div class="work-photo">
           <span class="work-label">Mold</span>
-          <img src="images/work-photo-2.jpg" alt="TotalClean mold remediation work photo">
+          <img src="images/work-photo-2.jpg" alt="TotalClean mold remediation work photo" onerror="this.style.display='none'">
         </div>
 
-        <div class="work-photo reveal">
+        <div class="work-photo">
           <span class="work-label">Fire</span>
-          <img src="images/work-photo-3.jpg" alt="TotalClean fire cleanup work photo">
+          <img src="images/work-photo-3.jpg" alt="TotalClean fire cleanup work photo" onerror="this.style.display='none'">
         </div>
 
-        <div class="work-photo reveal">
+        <div class="work-photo">
           <span class="work-label">Biohazard</span>
-          <img src="images/work-photo-4.jpg" alt="TotalClean biohazard cleanup work photo">
+          <img src="images/work-photo-4.jpg" alt="TotalClean biohazard cleanup work photo" onerror="this.style.display='none'">
         </div>
 
       </div>
