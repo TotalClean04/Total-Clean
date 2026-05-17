@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -11,7 +12,7 @@
     content="TotalClean LLC provides emergency restoration services including water mitigation, mold remediation, fire cleanup, and biohazard cleanup."
   />
 
-  <link rel="icon" href="images/logo.png?v=6"/>
+  <link rel="icon" href="images/logo.png?v=7"/>
 
   <style>
 
@@ -29,9 +30,9 @@
     }
 
     *{
-      box-sizing:border-box;
       margin:0;
       padding:0;
+      box-sizing:border-box;
     }
 
     html{
@@ -49,13 +50,13 @@
     }
 
     a{
-      color:inherit;
       text-decoration:none;
+      color:inherit;
     }
 
     img{
-      display:block;
       max-width:100%;
+      display:block;
     }
 
     .container{
@@ -76,7 +77,7 @@
       top:0;
       z-index:1000;
       backdrop-filter:blur(14px);
-      background:rgba(11,11,13,.75);
+      background:rgba(11,11,13,.72);
       border-bottom:1px solid var(--line);
     }
 
@@ -276,33 +277,6 @@
       font-size:1.45rem;
     }
 
-    .list{
-      display:grid;
-      gap:.8rem;
-      margin-top:1rem;
-    }
-
-    .list-item{
-      display:flex;
-      gap:.8rem;
-      padding:1rem;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
-    }
-
-    .list-bullet{
-      width:28px;
-      height:28px;
-      border-radius:999px;
-      display:grid;
-      place-items:center;
-      background:var(--red-soft);
-      color:#ff6469;
-      border:1px solid rgba(214,31,38,.2);
-      flex-shrink:0;
-    }
-
     .grid-4{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -342,14 +316,6 @@
       grid-template-columns:1fr 1fr;
       gap:2rem;
       align-items:start;
-    }
-
-    .band{
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:1.5rem;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
     }
 
     .inspection-gallery{
@@ -431,109 +397,6 @@
       background:var(--red);
     }
 
-    .work-gallery{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1rem;
-    }
-
-    .work-photo{
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      min-height:260px;
-    }
-
-    .work-photo img{
-      width:100%;
-      height:100%;
-      min-height:260px;
-      object-fit:cover;
-    }
-
-    .contact-pills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.75rem;
-      margin-top:1rem;
-    }
-
-    .pill{
-      padding:.9rem 1rem;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
-    }
-
-    form{
-      display:grid;
-      gap:1rem;
-      margin-top:1rem;
-    }
-
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1rem;
-    }
-
-    input,select,textarea{
-      width:100%;
-      padding:15px 16px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:#111216;
-      color:#fff;
-      font:inherit;
-      outline:none;
-    }
-
-    textarea{
-      min-height:130px;
-      resize:vertical;
-    }
-
-    .faq{
-      display:grid;
-      gap:1rem;
-    }
-
-    details{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:1rem;
-      background:rgba(255,255,255,.02);
-    }
-
-    summary{
-      cursor:pointer;
-      font-weight:700;
-      list-style:none;
-    }
-
-    footer{
-      padding:38px 0 80px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-    }
-
-    .footer-grid{
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:1rem;
-    }
-
-    .sticky-call{
-      position:fixed;
-      left:1rem;
-      right:1rem;
-      bottom:1rem;
-      z-index:1001;
-      display:none;
-      box-shadow:0 18px 38px rgba(0,0,0,.35);
-    }
-
     .reveal{
       opacity:0;
       transform:translateY(20px);
@@ -549,9 +412,7 @@
 
       .hero-grid,
       .split,
-      .grid-4,
-      .work-gallery,
-      .form-grid{
+      .grid-4{
         grid-template-columns:1fr;
       }
 
@@ -575,14 +436,6 @@
         padding:58px 0 32px;
       }
 
-      .sticky-call{
-        display:block;
-      }
-
-      footer{
-        padding-bottom:110px;
-      }
-
       .inspection-gallery{
         min-height:340px;
       }
@@ -594,40 +447,47 @@
     }
 
   </style>
+
 </head>
 
 <body>
 
   <div class="topbar">
+
     <div class="container nav">
 
       <a href="#" class="brand">
 
         <img
-          src="images/logo.png?v=6"
+          src="images/logo.png?v=7"
           alt="TotalClean LLC Logo"
           class="logo"
         >
 
         <div class="brand-name">
+
           <div>TotalClean LLC</div>
 
           <div class="brand-sub">
             Emergency Restoration Services
           </div>
+
         </div>
 
       </a>
 
       <nav class="nav-links">
+
         <a href="#services">Services</a>
-        <a href="#insurance">Insurance</a>
         <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn-primary">Request Help</a>
+        <a href="#contact" class="btn btn-primary">
+          Request Help
+        </a>
+
       </nav>
 
     </div>
+
   </div>
 
   <header class="hero">
@@ -637,18 +497,19 @@
       <div class="reveal">
 
         <div class="eyebrow">
-          Available Monday–Saturday, 6:00 AM – 10:00 PM
+          Available Monday–Saturday • 6AM – 10PM
         </div>
 
         <h1>
-          Emergency restoration, built for real property damage.
+          Emergency restoration built for real property damage.
         </h1>
 
         <p class="lead">
-          TotalClean LLC helps homeowners, property managers, and insurance-related contacts with water mitigation, mold remediation, fire cleanup, and biohazard cleanup through a clean, responsive, professional process.
+          TotalClean LLC helps homeowners and property managers with water mitigation, mold remediation, fire cleanup, and biohazard cleanup through a responsive, professional process.
         </p>
 
         <div class="hero-actions">
+
           <a class="btn btn-primary" href="#contact">
             Request Help Now
           </a>
@@ -656,6 +517,7 @@
           <a class="btn btn-secondary" href="tel:7867686649">
             Call Emergency Line
           </a>
+
         </div>
 
         <div class="hero-points">
@@ -670,14 +532,14 @@
           <div class="point">
             <strong>Clear Documentation</strong>
             <span class="muted">
-              Photos, scope notes, and organized job information.
+              Organized photos, notes, and communication.
             </span>
           </div>
 
           <div class="point">
             <strong>Professional Process</strong>
             <span class="muted">
-              Simple communication from first call to completion.
+              Clean communication from start to finish.
             </span>
           </div>
 
@@ -690,6 +552,7 @@
         <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
 
           <div>
+
             <div style="font-size:.9rem;color:var(--muted);margin-bottom:.3rem;">
               Emergency Service Request
             </div>
@@ -697,10 +560,11 @@
             <div style="font-weight:800;font-size:1.4rem;">
               Need help now?
             </div>
+
           </div>
 
           <img
-            src="images/logo.png?v=6"
+            src="images/logo.png?v=7"
             alt="TotalClean LLC Logo"
             class="hero-logo"
           >
@@ -737,6 +601,62 @@
 
   </header>
 
+  <section id="services" class="section">
+
+    <div class="container">
+
+      <div class="reveal">
+
+        <h2>
+          Core services designed to solve urgent problems fast.
+        </h2>
+
+        <p class="lead">
+          We help property owners respond quickly to damage, cleanup needs, and remediation situations with a professional process.
+        </p>
+
+      </div>
+
+      <div class="grid-4">
+
+        <article class="card reveal">
+          <div class="card-icon">💧</div>
+          <h3>Water Mitigation</h3>
+          <p class="muted">
+            Extraction, drying support, equipment setup, and structured documentation.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">🦠</div>
+          <h3>Mold Remediation</h3>
+          <p class="muted">
+            Remediation-focused service with clear communication and organized reporting.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">🔥</div>
+          <h3>Fire Cleanup</h3>
+          <p class="muted">
+            Cleanup support after fire and smoke damage.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">⚠️</div>
+          <h3>Biohazard Cleanup</h3>
+          <p class="muted">
+            Sensitive cleanup handled with professionalism and care.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
   <section id="about" class="section">
 
     <div class="container split">
@@ -744,7 +664,7 @@
       <div class="reveal">
 
         <h2>
-          A modern restoration company with a clean, sharp process.
+          A modern restoration company with a clean process.
         </h2>
 
         <p class="lead">
@@ -752,7 +672,7 @@
         </p>
 
         <p class="muted">
-          Our focus is to make the process easier for homeowners, property managers, and referral partners by responding quickly, documenting clearly, and keeping the work organized from start to finish.
+          Our focus is to make the process easier for homeowners and property managers by responding quickly, documenting clearly, and keeping the work organized from start to finish.
         </p>
 
       </div>
@@ -771,16 +691,20 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-a.jpg?v=1"
+              src="images/inspection-1.jpg?v=2"
               alt="TotalClean inspection photo 1"
             >
 
             <div class="inspection-caption">
-              <strong>Inspection Documentation</strong>
+
+              <strong>
+                Inspection Documentation
+              </strong>
 
               <span>
                 Photos help identify affected areas and support a clear service plan.
               </span>
+
             </div>
 
           </div>
@@ -788,16 +712,20 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-2.jpg"
+              src="images/inspection-2.jpg?v=2"
               alt="TotalClean inspection photo 2"
             >
 
             <div class="inspection-caption">
-              <strong>Moisture & Damage Review</strong>
+
+              <strong>
+                Moisture & Damage Review
+              </strong>
 
               <span>
-                We focus on clean communication and organized findings.
+                Organized findings and professional communication.
               </span>
+
             </div>
 
           </div>
@@ -805,16 +733,20 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-3.jpg"
+              src="images/inspection-3.jpg?v=2"
               alt="TotalClean inspection photo 3"
             >
 
             <div class="inspection-caption">
-              <strong>Work Area Assessment</strong>
+
+              <strong>
+                Work Area Assessment
+              </strong>
 
               <span>
-                Every job starts with understanding the affected space.
+                Every project starts with understanding the affected space.
               </span>
+
             </div>
 
           </div>
@@ -822,16 +754,20 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-4.jpg"
+              src="images/inspection-4.jpg?v=2"
               alt="TotalClean inspection photo 4"
             >
 
             <div class="inspection-caption">
-              <strong>Professional Process</strong>
+
+              <strong>
+                Professional Process
+              </strong>
 
               <span>
                 Clear photos, notes, and communication from start to finish.
               </span>
+
             </div>
 
           </div>
@@ -847,11 +783,15 @@
   <script>
 
     const observer = new IntersectionObserver((entries) => {
+
       entries.forEach(entry => {
+
         if(entry.isIntersecting){
           entry.target.classList.add("show");
         }
+
       });
+
     }, { threshold:0.12 });
 
     document.querySelectorAll(".reveal").forEach(el => {
@@ -859,6 +799,7 @@
     });
 
     const track = document.querySelector(".inspection-track");
+
     const dots = document.querySelectorAll(".gallery-dot");
 
     let currentSlide = 0;
@@ -871,15 +812,22 @@
         `translateX(-${index * 100}%)`;
 
       dots.forEach((dot, dotIndex) => {
-        dot.classList.toggle("active", dotIndex === index);
+
+        dot.classList.toggle(
+          "active",
+          dotIndex === index
+        );
+
       });
 
     }
 
     dots.forEach((dot, index) => {
+
       dot.addEventListener("click", () => {
         showSlide(index);
       });
+
     });
 
     setInterval(() => {
