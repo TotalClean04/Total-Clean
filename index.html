@@ -12,7 +12,7 @@
     content="TotalClean LLC provides emergency restoration services including water mitigation, mold remediation, fire cleanup, and biohazard cleanup."
   />
 
-  <link rel="icon" href="images/logo.png?v=7"/>
+  <link rel="icon" href="./images/logo.png?v=8"/>
 
   <style>
 
@@ -47,16 +47,17 @@
         var(--bg);
       color:var(--text);
       line-height:1.6;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
+      overflow-x:hidden;
     }
 
     img{
       max-width:100%;
       display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
     .container{
@@ -77,7 +78,7 @@
       top:0;
       z-index:1000;
       backdrop-filter:blur(14px);
-      background:rgba(11,11,13,.72);
+      background:rgba(11,11,13,.75);
       border-bottom:1px solid var(--line);
     }
 
@@ -131,7 +132,7 @@
     }
 
     .nav-links a:hover{
-      color:var(--white);
+      color:#fff;
     }
 
     .btn{
@@ -242,16 +243,6 @@
       position:relative;
     }
 
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      width:220px;
-      height:220px;
-      bottom:-70px;
-      right:-70px;
-      background:radial-gradient(circle, rgba(214,31,38,.25), transparent 68%);
-    }
-
     .metric-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -324,18 +315,20 @@
       overflow:hidden;
       border:1px solid var(--line);
       box-shadow:var(--shadow);
-      min-height:430px;
+      height:430px;
     }
 
     .inspection-track{
       display:flex;
-      height:430px;
+      width:100%;
+      height:100%;
       transition:transform .8s cubic-bezier(.22,1,.36,1);
     }
 
     .inspection-slide{
       min-width:100%;
       position:relative;
+      height:100%;
     }
 
     .inspection-slide img{
@@ -397,6 +390,61 @@
       background:var(--red);
     }
 
+    .contact-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1rem;
+    }
+
+    .pill{
+      padding:.9rem 1rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+    }
+
+    form{
+      display:grid;
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+    }
+
+    input,select,textarea{
+      width:100%;
+      padding:15px 16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#111216;
+      color:#fff;
+      font:inherit;
+      outline:none;
+    }
+
+    textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    footer{
+      padding:38px 0 80px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+
     .reveal{
       opacity:0;
       transform:translateY(20px);
@@ -412,7 +460,8 @@
 
       .hero-grid,
       .split,
-      .grid-4{
+      .grid-4,
+      .form-grid{
         grid-template-columns:1fr;
       }
 
@@ -428,20 +477,16 @@
 
     @media (max-width:720px){
 
+      .inspection-gallery{
+        height:340px;
+      }
+
       .section{
         padding:72px 0;
       }
 
       .hero{
         padding:58px 0 32px;
-      }
-
-      .inspection-gallery{
-        min-height:340px;
-      }
-
-      .inspection-track{
-        height:340px;
       }
 
     }
@@ -459,7 +504,7 @@
       <a href="#" class="brand">
 
         <img
-          src="images/logo.png?v=7"
+          src="./images/logo.png?v=8"
           alt="TotalClean LLC Logo"
           class="logo"
         >
@@ -505,7 +550,7 @@
         </h1>
 
         <p class="lead">
-          TotalClean LLC helps homeowners and property managers with water mitigation, mold remediation, fire cleanup, and biohazard cleanup through a responsive, professional process.
+          TotalClean LLC helps homeowners and property managers with water mitigation, mold remediation, fire cleanup, and biohazard cleanup.
         </p>
 
         <div class="hero-actions">
@@ -517,31 +562,6 @@
           <a class="btn btn-secondary" href="tel:7867686649">
             Call Emergency Line
           </a>
-
-        </div>
-
-        <div class="hero-points">
-
-          <div class="point">
-            <strong>Fast Response</strong>
-            <span class="muted">
-              Emergency service availability Monday–Saturday.
-            </span>
-          </div>
-
-          <div class="point">
-            <strong>Clear Documentation</strong>
-            <span class="muted">
-              Organized photos, notes, and communication.
-            </span>
-          </div>
-
-          <div class="point">
-            <strong>Professional Process</strong>
-            <span class="muted">
-              Clean communication from start to finish.
-            </span>
-          </div>
 
         </div>
 
@@ -564,7 +584,7 @@
           </div>
 
           <img
-            src="images/logo.png?v=7"
+            src="./images/logo.png?v=8"
             alt="TotalClean LLC Logo"
             class="hero-logo"
           >
@@ -690,11 +710,11 @@
 
           <div class="inspection-slide">
 
-           <img
-  src="./images/inspection-1.jpg?v=3"
-  alt="TotalClean inspection photo 1"
-  loading="lazy"
->
+            <img
+              src="./images/inspection-1.jpg?v=3"
+              alt="TotalClean inspection photo 1"
+              loading="lazy"
+            >
 
             <div class="inspection-caption">
 
@@ -713,8 +733,9 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-2.jpg?v=2"
+              src="./images/inspection-2.jpg?v=3"
               alt="TotalClean inspection photo 2"
+              loading="lazy"
             >
 
             <div class="inspection-caption">
@@ -734,8 +755,9 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-3.jpg?v=2"
+              src="./images/inspection-3.jpg?v=3"
               alt="TotalClean inspection photo 3"
+              loading="lazy"
             >
 
             <div class="inspection-caption">
@@ -755,8 +777,9 @@
           <div class="inspection-slide">
 
             <img
-              src="images/inspection-4.jpg?v=2"
+              src="./images/inspection-4.jpg?v=3"
               alt="TotalClean inspection photo 4"
+              loading="lazy"
             >
 
             <div class="inspection-caption">
@@ -781,11 +804,111 @@
 
   </section>
 
+  <section id="contact" class="section">
+
+    <div class="container split">
+
+      <div class="reveal">
+
+        <h2>
+          Request help or start the conversation.
+        </h2>
+
+        <p class="lead">
+          Contact us for water, mold, fire, or biohazard cleanup needs.
+        </p>
+
+        <div class="contact-pills">
+
+          <a class="pill" href="tel:7867686649">
+            📞 Daniel E. Viloria / 786-768-6649
+          </a>
+
+          <a class="pill" href="tel:7865689650">
+            📞 Daniel A. Viloria / 786-568-9650
+          </a>
+
+          <a class="pill" href="mailto:totalclean150@gmail.com">
+            ✉️ totalclean150@gmail.com
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-card reveal">
+
+        <h3 style="margin-bottom:.5rem;">
+          Request Service
+        </h3>
+
+        <form>
+
+          <div class="form-grid">
+
+            <input
+              type="text"
+              placeholder="Full Name"
+            >
+
+            <input
+              type="tel"
+              placeholder="Phone Number"
+            >
+
+          </div>
+
+          <div class="form-grid">
+
+            <input
+              type="email"
+              placeholder="Email Address"
+            >
+
+            <input
+              type="text"
+              placeholder="Property Address"
+            >
+
+          </div>
+
+          <textarea placeholder="Tell us what happened..."></textarea>
+
+          <button type="submit" class="btn btn-primary">
+            Submit Request
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="container footer-grid">
+
+      <div>
+        <strong>TotalClean LLC</strong><br>
+        Emergency Restoration Services
+      </div>
+
+      <div>
+        Daniel E. Viloria • 786-768-6649<br>
+        Daniel A. Viloria • 786-568-9650
+      </div>
+
+    </div>
+
+  </footer>
+
   <script>
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries)=>{
 
-      entries.forEach(entry => {
+      entries.forEach(entry=>{
 
         if(entry.isIntersecting){
           entry.target.classList.add("show");
@@ -795,13 +918,15 @@
 
     }, { threshold:0.12 });
 
-    document.querySelectorAll(".reveal").forEach(el => {
+    document.querySelectorAll(".reveal").forEach(el=>{
       observer.observe(el);
     });
 
-    const track = document.querySelector(".inspection-track");
+    const track =
+      document.querySelector(".inspection-track");
 
-    const dots = document.querySelectorAll(".gallery-dot");
+    const dots =
+      document.querySelectorAll(".gallery-dot");
 
     let currentSlide = 0;
 
@@ -812,7 +937,7 @@
       track.style.transform =
         `translateX(-${index * 100}%)`;
 
-      dots.forEach((dot, dotIndex) => {
+      dots.forEach((dot, dotIndex)=>{
 
         dot.classList.toggle(
           "active",
@@ -823,15 +948,17 @@
 
     }
 
-    dots.forEach((dot, index) => {
+    dots.forEach((dot, index)=>{
 
-      dot.addEventListener("click", () => {
+      dot.addEventListener("click", ()=>{
+
         showSlide(index);
+
       });
 
     });
 
-    setInterval(() => {
+    setInterval(()=>{
 
       currentSlide =
         (currentSlide + 1) % dots.length;
