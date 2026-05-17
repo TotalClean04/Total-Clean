@@ -253,6 +253,18 @@
       border:1px solid var(--line);
       border-radius:18px;
       background:rgba(255,255,255,.02);
+      transition:.24s ease;
+    }
+
+    .metric.service-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(214,31,38,.45);
+      background:rgba(214,31,38,.06);
+    }
+
+    .metric.service-card:focus-visible{
+      outline:2px solid var(--red);
+      outline-offset:3px;
     }
 
     .metric span{
@@ -312,22 +324,6 @@
     .service-card:focus-visible{
       outline:2px solid var(--red);
       outline-offset:3px;
-    }
-
-    .card-cta{
-      display:inline-flex;
-      align-items:center;
-      margin-top:1rem;
-      font-size:.9rem;
-      font-weight:700;
-      color:#ff6469;
-      opacity:.7;
-      transition:.24s ease;
-    }
-
-    .service-card:hover .card-cta{
-      opacity:1;
-      transform:translateX(3px);
     }
 
     /* Brief highlight when the form is targeted from a service card */
@@ -886,22 +882,22 @@
         </div>
 
         <div class="metric-grid">
-          <div class="metric">
+          <div class="metric service-card" role="button" tabindex="0" data-service="Water Mitigation">
             <span>Restoration</span>
             <strong>Water</strong>
           </div>
 
-          <div class="metric">
+          <div class="metric service-card" role="button" tabindex="0" data-service="Mold Remediation">
             <span>Remediation</span>
             <strong>Mold</strong>
           </div>
 
-          <div class="metric">
+          <div class="metric service-card" role="button" tabindex="0" data-service="Fire Cleanup">
             <span>Cleanup</span>
             <strong>Fire</strong>
           </div>
 
-          <div class="metric">
+          <div class="metric service-card" role="button" tabindex="0" data-service="Biohazard Cleanup">
             <span>Cleanup</span>
             <strong>Biohazard</strong>
           </div>
@@ -956,7 +952,6 @@
           <p class="muted">
             Extraction, drying support, equipment setup, and structured documentation for affected areas.
           </p>
-          <span class="card-cta">Schedule this service →</span>
         </article>
 
         <article class="card service-card reveal" role="button" tabindex="0" data-service="Mold Remediation">
@@ -965,7 +960,6 @@
           <p class="muted">
             Remediation-focused service with a clean process, careful communication, and clear reporting.
           </p>
-          <span class="card-cta">Schedule this service →</span>
         </article>
 
         <article class="card service-card reveal" role="button" tabindex="0" data-service="Fire Cleanup">
@@ -974,7 +968,6 @@
           <p class="muted">
             Cleanup support after fire and smoke damage with organized scope communication and follow-through.
           </p>
-          <span class="card-cta">Schedule this service →</span>
         </article>
 
         <article class="card service-card reveal" role="button" tabindex="0" data-service="Biohazard Cleanup">
@@ -983,7 +976,6 @@
           <p class="muted">
             Sensitive cleanup handled with professionalism, discretion, and safety-oriented processes.
           </p>
-          <span class="card-cta">Schedule this service →</span>
         </article>
 
       </div>
