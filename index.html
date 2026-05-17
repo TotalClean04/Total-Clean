@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>TotalClean LLC | Water Mitigation & Mold Remediation</title>
+
   <meta
     name="description"
     content="TotalClean LLC provides water mitigation, mold remediation, biohazard cleanup, and fire cleanup with fast response and professional documentation."
   />
+
+  <link rel="icon" href="images/logo.png" />
+
   <style>
     :root{
       --bg:#0b0b0d;
@@ -26,7 +31,9 @@
     }
 
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -40,7 +47,12 @@
 
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    .container{width:min(calc(100% - 2rem), var(--max)); margin:0 auto}
+
+    .container{
+      width:min(calc(100% - 2rem), var(--max));
+      margin:0 auto;
+    }
+
     .section{padding:88px 0}
     .section-sm{padding:56px 0}
 
@@ -69,15 +81,30 @@
       letter-spacing:.2px;
     }
 
+    .brand-name{
+      line-height:1.1;
+    }
+
     .logo{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      background:linear-gradient(135deg, var(--red), #7e0e12);
-      display:grid;
-      place-items:center;
-      box-shadow:0 8px 24px rgba(214,31,38,.35);
-      font-weight:800;
+      width:58px;
+      height:58px;
+      border-radius:14px;
+      object-fit:contain;
+      background:#000;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 24px rgba(214,31,38,.25);
+      padding:6px;
+    }
+
+    .hero-logo{
+      width:76px;
+      height:76px;
+      border-radius:18px;
+      object-fit:contain;
+      background:#000;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 10px 28px rgba(214,31,38,.28);
+      padding:8px;
     }
 
     .nav-links{
@@ -419,7 +446,11 @@
     }
 
     summary::-webkit-details-marker{display:none}
-    details p{color:var(--muted); margin:.8rem 0 0}
+
+    details p{
+      color:var(--muted);
+      margin:.8rem 0 0;
+    }
 
     footer{
       padding:38px 0 80px;
@@ -482,14 +513,20 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="topbar">
     <div class="container nav">
+
       <a href="#" class="brand">
-        <div class="logo">TC</div>
-        <div>
+        <img src="images/logo.png" alt="TotalClean LLC Logo" class="logo">
+
+        <div class="brand-name">
           <div>TotalClean LLC</div>
-          <div style="font-size:.82rem;color:var(--muted);font-weight:500;">Water Mitigation & Mold Remediation</div>
+          <div style="font-size:.82rem;color:var(--muted);font-weight:500;">
+            Water Mitigation & Mold Remediation
+          </div>
         </div>
       </a>
 
@@ -500,14 +537,20 @@
         <a href="#faq">FAQ</a>
         <a href="#contact" class="btn btn-primary">Request Help</a>
       </nav>
+
     </div>
   </div>
 
   <header class="hero">
     <div class="container hero-grid">
+
       <div class="reveal">
-        <div class="eyebrow">Fast response • Clear documentation • Professional service</div>
+        <div class="eyebrow">
+          Fast response • Clear documentation • Professional service
+        </div>
+
         <h1>Premium remediation, built for real emergencies.</h1>
+
         <p class="lead">
           TotalClean LLC helps homeowners, property managers, and insurance-related contacts with
           water mitigation, mold remediation, biohazard cleanup, and fire / smoke cleanup through
@@ -516,84 +559,122 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Request Help Now</a>
-          <a class="btn btn-secondary" href="tel:7867686649">Call 786-768-6649</a>
+          <a class="btn btn-secondary" href="tel:7867686649">Call Emergency Line</a>
         </div>
 
         <div class="hero-points">
+
           <div class="point">
             <strong>Water Mitigation</strong>
             <span class="muted">Fast drying, equipment setup, and documentation.</span>
           </div>
+
           <div class="point">
             <strong>Mold Remediation</strong>
             <span class="muted">Targeted cleanup with a clean, professional process.</span>
           </div>
+
           <div class="point">
             <strong>Insurance-Friendly</strong>
             <span class="muted">Clear reporting, photos, and organized communication.</span>
           </div>
+
         </div>
       </div>
 
       <div class="hero-card reveal">
+
         <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+
           <div>
-            <div style="font-size:.9rem;color:var(--muted);margin-bottom:.3rem;">Emergency Service Request</div>
-            <div style="font-weight:800;font-size:1.4rem;">Need help now?</div>
+            <div style="font-size:.9rem;color:var(--muted);margin-bottom:.3rem;">
+              Emergency Service Request
+            </div>
+
+            <div style="font-weight:800;font-size:1.4rem;">
+              Need help now?
+            </div>
           </div>
-          <div class="logo" style="width:52px;height:52px;">TC</div>
+
+          <img src="images/logo.png" alt="TotalClean LLC Logo" class="hero-logo">
+
         </div>
 
         <div class="metric-grid">
+
           <div class="metric">
             <span>Primary Service</span>
             <strong>Water</strong>
           </div>
+
           <div class="metric">
             <span>Primary Service</span>
             <strong>Mold</strong>
           </div>
+
           <div class="metric">
-            <span>Contact</span>
-            <strong style="font-size:1.08rem;">786-768-6649</strong>
+            <span>Emergency Line</span>
+            <strong style="font-size:1.08rem;">
+              Daniel E. Viloria<br>
+              786-768-6649
+            </strong>
           </div>
+
           <div class="metric">
-            <span>Email</span>
-            <strong style="font-size:1.02rem;">totalclean@gmail.com</strong>
+            <span>General Inquiries</span>
+            <strong style="font-size:1.08rem;">
+              Daniel A. Viloria<br>
+              786-568-9650
+            </strong>
           </div>
+
         </div>
 
         <div class="list" style="margin-top:1rem;">
+
           <div class="list-item">
             <div class="list-bullet">✓</div>
             <div>
               <strong>Simple intake</strong>
-              <div class="muted">Quick contact options for homeowners, adjusters, and partners.</div>
+              <div class="muted">
+                Quick contact options for homeowners, adjusters, and partners.
+              </div>
             </div>
           </div>
+
           <div class="list-item">
             <div class="list-bullet">✓</div>
             <div>
               <strong>Professional documentation</strong>
-              <div class="muted">Structured reports, photos, and scope communication.</div>
+              <div class="muted">
+                Structured reports, photos, and scope communication.
+              </div>
             </div>
           </div>
+
           <div class="list-item">
             <div class="list-bullet">✓</div>
             <div>
               <strong>Built for mobile</strong>
-              <div class="muted">Fast, light, and easy to use during urgent situations.</div>
+              <div class="muted">
+                Fast, light, and easy to use during urgent situations.
+              </div>
             </div>
           </div>
+
         </div>
+
       </div>
+
     </div>
   </header>
 
   <section id="services" class="section">
     <div class="container">
+
       <div class="reveal">
         <h2>Core services designed to solve urgent problems fast.</h2>
+
         <p class="lead">
           Clean layout, direct messaging, and simple actions matter. People should understand what
           you do within seconds and know exactly how to contact you.
@@ -601,6 +682,7 @@
       </div>
 
       <div class="grid-4">
+
         <article class="card reveal">
           <div class="card-icon">💧</div>
           <h3>Water Mitigation</h3>
@@ -632,56 +714,79 @@
             Cleanup support after fire and smoke damage with organized scope communication and follow-through.
           </p>
         </article>
+
       </div>
+
     </div>
   </section>
 
   <section id="insurance" class="section-sm">
     <div class="container">
+
       <div class="band reveal">
+
         <div class="split">
+
           <div>
             <h2>Built to look credible to insurance-related contacts too.</h2>
+
             <p class="lead">
               Homeowners need confidence. Insurance-related contacts need clarity. Your site should communicate both.
             </p>
           </div>
+
           <div class="list">
+
             <div class="list-item">
               <div class="list-bullet">1</div>
               <div>
                 <strong>Clear documentation</strong>
-                <div class="muted">Photos, structured reporting, and organized communication.</div>
+                <div class="muted">
+                  Photos, structured reporting, and organized communication.
+                </div>
               </div>
             </div>
+
             <div class="list-item">
               <div class="list-bullet">2</div>
               <div>
                 <strong>Professional scope presentation</strong>
-                <div class="muted">A simple, polished website builds confidence before anyone even calls.</div>
+                <div class="muted">
+                  A simple, polished website builds confidence before anyone even calls.
+                </div>
               </div>
             </div>
+
             <div class="list-item">
               <div class="list-bullet">3</div>
               <div>
                 <strong>Fast response paths</strong>
-                <div class="muted">Phone, form, and straightforward contact flow without friction.</div>
+                <div class="muted">
+                  Phone, form, and straightforward contact flow without friction.
+                </div>
               </div>
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
   </section>
 
   <section id="about" class="section">
     <div class="container split">
+
       <div class="reveal">
         <h2>A modern remediation brand with a clean, sharp presentation.</h2>
+
         <p class="lead">
           TotalClean LLC is positioned as a responsive, detail-focused service company built around
           trust, communication, and a professional customer experience.
         </p>
+
         <p class="muted">
           This starter site is intentionally lightweight. It keeps the visual polish high while
           avoiding heavy effects that slow down performance. That balance is what makes premium
@@ -690,95 +795,161 @@
       </div>
 
       <div class="grid-3 reveal">
+
         <div class="card">
           <h3>Fast</h3>
-          <p class="muted">Optimized for quick loading and simple emergency contact flow.</p>
+          <p class="muted">
+            Optimized for quick loading and simple emergency contact flow.
+          </p>
         </div>
+
         <div class="card">
           <h3>Professional</h3>
-          <p class="muted">Designed to feel credible to homeowners and industry partners.</p>
+          <p class="muted">
+            Designed to feel credible to homeowners and industry partners.
+          </p>
         </div>
+
         <div class="card">
           <h3>Simple</h3>
-          <p class="muted">Minimal structure, strong hierarchy, and easy navigation.</p>
+          <p class="muted">
+            Minimal structure, strong hierarchy, and easy navigation.
+          </p>
         </div>
+
       </div>
+
     </div>
   </section>
 
   <section class="section-sm">
     <div class="container">
+
       <div class="reveal">
         <h2>What people should feel when they land here.</h2>
       </div>
 
       <div class="grid-3">
+
         <div class="card testimonial reveal">
-          <div class="quote">“This looks organized, modern, and easy to trust.”</div>
-          <div class="person">Ideal first impression for homeowners</div>
+          <div class="quote">
+            “This looks organized, modern, and easy to trust.”
+          </div>
+          <div class="person">
+            Ideal first impression for homeowners
+          </div>
         </div>
+
         <div class="card testimonial reveal">
-          <div class="quote">“I can contact them fast without hunting around.”</div>
-          <div class="person">Ideal first impression for urgent visitors</div>
+          <div class="quote">
+            “I can contact them fast without hunting around.”
+          </div>
+          <div class="person">
+            Ideal first impression for urgent visitors
+          </div>
         </div>
+
         <div class="card testimonial reveal">
-          <div class="quote">“This company presents itself professionally.”</div>
-          <div class="person">Ideal first impression for adjusters and partners</div>
+          <div class="quote">
+            “This company presents itself professionally.”
+          </div>
+          <div class="person">
+            Ideal first impression for adjusters and partners
+          </div>
         </div>
+
       </div>
+
     </div>
   </section>
 
   <section id="faq" class="section">
     <div class="container split">
+
       <div class="reveal">
         <h2>Simple answers to common questions.</h2>
+
         <p class="lead">
           FAQs reduce hesitation and help users move faster toward calling or submitting a request.
         </p>
       </div>
 
       <div class="faq reveal">
+
         <details open>
           <summary>What services does TotalClean LLC provide?</summary>
-          <p>Water mitigation, mold remediation, biohazard cleanup, and fire / smoke cleanup.</p>
+          <p>
+            Water mitigation, mold remediation, biohazard cleanup, and fire / smoke cleanup.
+          </p>
         </details>
+
         <details>
           <summary>Can this site work for Google Ads traffic?</summary>
-          <p>Yes. It is structured like a lead-generation landing site with clear calls to action and a simple contact flow.</p>
+          <p>
+            Yes. It is structured like a lead-generation landing site with clear calls to action and a simple contact flow.
+          </p>
         </details>
+
         <details>
           <summary>Can I add my real logo later?</summary>
-          <p>Yes. Replace the temporary “TC” logo blocks with your uploaded TotalClean logo image.</p>
+          <p>
+            Yes. Upload your TotalClean logo into the images folder and name it logo.png.
+          </p>
         </details>
+
         <details>
           <summary>Can I connect this form to email or a CRM?</summary>
-          <p>Yes. Right now this is front-end only. The form can be connected to Formspree, Netlify Forms, EmailJS, Zapier, HubSpot, or a custom backend.</p>
+          <p>
+            Yes. Right now this is front-end only. The form can be connected to Formspree, Netlify Forms, EmailJS, Zapier, HubSpot, or a custom backend.
+          </p>
         </details>
+
       </div>
+
     </div>
   </section>
 
   <section id="contact" class="section">
     <div class="container split">
+
       <div class="reveal">
+
         <h2>Request help or start the conversation.</h2>
+
         <p class="lead">
           Make it easy for homeowners, insurance-related contacts, and referral partners to reach you.
         </p>
 
         <div class="contact-pills">
-          <a class="pill" href="tel:7867686649">📞 786-768-6649</a>
-          <a class="pill" href="tel:7865689650">📞 786-568-9650</a>
-          <a class="pill" href="mailto:totalclean@gmail.com">✉️ totalclean@gmail.com</a>
+
+          <a class="pill" href="tel:7867686649">
+            📞 Daniel E. Viloria / Emergency Line: 786-768-6649
+          </a>
+
+          <a class="pill" href="tel:7865689650">
+            📞 Daniel A. Viloria / General Inquiries: 786-568-9650
+          </a>
+
+          <a class="pill" href="mailto:totalclean150@gmail.com">
+            ✉️ totalclean150@gmail.com
+          </a>
+
         </div>
+
       </div>
 
       <div class="card reveal">
-        <h3 style="margin-bottom:.35rem;">Request Service</h3>
-        <p class="muted" style="margin-top:0;">This form is front-end only for now. Connect it to your preferred form handler later.</p>
+
+        <h3 style="margin-bottom:.35rem;">
+          Request Service
+        </h3>
+
+        <p class="muted" style="margin-top:0;">
+          Fast response • Professional documentation • Emergency support
+        </p>
 
         <form>
+
           <div class="form-grid">
             <input type="text" name="name" placeholder="Full name" />
             <input type="tel" name="phone" placeholder="Phone number" />
@@ -790,6 +961,7 @@
           </div>
 
           <div class="form-grid">
+
             <select name="service">
               <option value="">Service needed</option>
               <option>Water Mitigation</option>
@@ -806,6 +978,7 @@
               <option>Commercial Client</option>
               <option>Other</option>
             </select>
+
           </div>
 
           <select name="urgency">
@@ -818,25 +991,37 @@
 
           <textarea name="message" placeholder="Tell us what happened..."></textarea>
 
-          <button type="submit" class="btn btn-primary">Submit Request</button>
+          <button type="submit" class="btn btn-primary">
+            Submit Request
+          </button>
+
         </form>
+
       </div>
+
     </div>
   </section>
 
   <footer>
     <div class="container footer-grid">
+
       <div>
         <strong>TotalClean LLC</strong><br />
         Water Mitigation • Mold Remediation • Biohazard • Fire Cleanup
       </div>
+
       <div>
-        786-768-6649 / 786-568-9650 • totalclean@gmail.com
+        Daniel E. Viloria: 786-768-6649 •
+        Daniel A. Viloria: 786-568-9650 •
+        totalclean150@gmail.com
       </div>
+
     </div>
   </footer>
 
-  <a class="btn btn-primary sticky-call" href="tel:7867686649">Call Now • 786-768-6649</a>
+  <a class="btn btn-primary sticky-call" href="tel:7867686649">
+    Emergency Line • 786-768-6649
+  </a>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
@@ -847,12 +1032,13 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Demo form handler
     const form = document.querySelector("form");
+
     form.addEventListener("submit", function(e){
       e.preventDefault();
-      alert("Form submitted. Next step: connect this form to email, a CRM, or a backend.");
+      alert("Thanks. Your request is ready to be sent. Next step: connect this form to totalclean150@gmail.com using Formspree, EmailJS, HubSpot, or another form service.");
     });
   </script>
+
 </body>
 </html>
