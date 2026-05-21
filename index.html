@@ -111,6 +111,47 @@
 
     .nav-links a:hover{color:var(--white)}
 
+    /* ---- Hamburger menu (mobile only) ---- */
+    .nav-toggle{
+      display:none;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      color:var(--white);
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      cursor:pointer;
+      padding:0;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      transition:.2s ease;
+    }
+
+    .nav-toggle:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      background:var(--white);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1){
+      transform:translateY(7px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2){
+      opacity:0;
+    }
+    .nav-toggle.open span:nth-child(3){
+      transform:translateY(-7px) rotate(-45deg);
+    }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -775,8 +816,50 @@
         grid-template-columns:1fr;
       }
 
+      .nav-toggle{display:flex}
+
       .nav-links{
-        display:none;
+        position:absolute;
+        top:100%;
+        right:1rem;
+        left:1rem;
+        flex-direction:column;
+        align-items:stretch;
+        gap:.25rem;
+        padding:.85rem;
+        background:rgba(17,18,22,.96);
+        backdrop-filter:blur(14px);
+        border:1px solid var(--line);
+        border-radius:18px;
+        box-shadow:0 24px 50px rgba(0,0,0,.45);
+        font-size:1rem;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-8px);
+        transition:opacity .22s ease, transform .22s ease;
+      }
+
+      .nav-links.open{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+
+      .nav-links a{
+        display:block;
+        padding:.85rem 1rem;
+        border-radius:12px;
+        color:var(--white);
+      }
+
+      .nav-links a:hover{
+        background:rgba(255,255,255,.05);
+      }
+
+      .nav-links a.btn-primary{
+        margin-top:.35rem;
+        text-align:center;
+        justify-content:center;
       }
     }
 
@@ -822,7 +905,7 @@
         </div>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#services">Services</a>
         <a href="#insurance">Insurance</a>
         <a href="#reviews">Reviews</a>
@@ -831,6 +914,12 @@
         <a href="#faq">FAQ</a>
         <a href="#contact" class="btn btn-primary">Request Help</a>
       </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 
@@ -1330,6 +1419,36 @@
   </a>
 
   <script>
+    /* ===== Hamburger menu (mobile) ===== */
+    (function(){
+      const toggle = document.getElementById("navToggle");
+      const links  = document.getElementById("navLinks");
+      if (!toggle || !links) return;
+
+      function setOpen(open){
+        toggle.classList.toggle("open", open);
+        links.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      toggle.addEventListener("click", () => setOpen(!links.classList.contains("open")));
+
+      // Close when any link is clicked (so the menu doesn't stay over the section)
+      links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setOpen(false)));
+
+      // Close on Escape
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && links.classList.contains("open")) setOpen(false);
+      });
+
+      // Close when clicking outside the menu
+      document.addEventListener("click", e => {
+        if (!links.classList.contains("open")) return;
+        if (links.contains(e.target) || toggle.contains(e.target)) return;
+        setOpen(false);
+      });
+    })();
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('show');
