@@ -777,6 +777,105 @@
       align-items:center;
     }
 
+    /* ---- Call confirmation modal ---- */
+    .call-modal{
+      position:fixed;
+      inset:0;
+      z-index:3000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(10px);
+      animation:cm-fade .22s ease;
+    }
+
+    .call-modal.open{display:flex}
+
+    @keyframes cm-fade{from{opacity:0}to{opacity:1}}
+
+    .call-modal-panel{
+      width:100%;
+      max-width:420px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:1.6rem;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+      animation:cm-pop .25s ease;
+    }
+
+    @keyframes cm-pop{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
+
+    .call-modal h3{
+      font-size:1.3rem;
+      font-weight:800;
+      margin:0 0 .35rem;
+      color:var(--white);
+      letter-spacing:-.01em;
+    }
+
+    .call-modal p{
+      color:var(--muted);
+      font-size:.95rem;
+      margin:0 0 1.2rem;
+      line-height:1.45;
+    }
+
+    .call-modal-number{
+      display:block;
+      color:var(--white);
+      font-weight:700;
+      font-size:1.05rem;
+      margin-top:.2rem;
+      letter-spacing:.3px;
+    }
+
+    .call-modal-actions{display:grid;gap:.55rem}
+
+    .call-modal .cm-btn{
+      width:100%;
+      border:0;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      font:inherit;
+      text-align:center;
+      transition:.2s ease;
+      line-height:1;
+      text-decoration:none;
+      display:block;
+    }
+
+    .cm-call{
+      background:var(--red);
+      color:var(--white);
+      font-weight:800;
+      box-shadow:0 10px 24px rgba(214,31,38,.32);
+    }
+
+    .cm-call:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+    .cm-info{
+      background:rgba(255,255,255,.06);
+      color:var(--white);
+      border:1px solid var(--line);
+    }
+
+    .cm-info:hover{background:rgba(255,255,255,.1)}
+
+    .cm-cancel{
+      background:transparent;
+      color:var(--muted);
+      font-weight:600;
+      margin-top:.1rem;
+    }
+
+    .cm-cancel:hover{color:var(--white)}
+
     .sticky-call{
       position:fixed;
       left:1rem;
@@ -1418,6 +1517,22 @@
     Emergency Line • 786-768-6649
   </a>
 
+  <!-- Call confirmation modal (intercepts all tel: links) -->
+  <div class="call-modal" id="callModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+    <div class="call-modal-panel">
+      <h3 id="cmTitle">Before you call</h3>
+      <p>
+        You're about to dial our emergency line at
+        <span class="call-modal-number" id="cmNumber">786-768-6649</span>
+      </p>
+      <div class="call-modal-actions">
+        <a class="cm-btn cm-call" id="cmCall" href="tel:7867686649">📞 Call Emergency Line</a>
+        <a class="cm-btn cm-info" id="cmInfo" href="#contact">Request Service</a>
+        <button class="cm-btn cm-cancel" id="cmCancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ===== Hamburger menu (mobile) ===== */
     (function(){
@@ -1446,6 +1561,59 @@
         if (!links.classList.contains("open")) return;
         if (links.contains(e.target) || toggle.contains(e.target)) return;
         setOpen(false);
+      });
+    })();
+
+    /* ===== Call confirmation modal =====
+       Any <a href="tel:..."> link opens this confirmation popup first,
+       giving people a choice between Emergency Call, Get More Info, and Cancel
+       before actually dialing.
+       ====================================================== */
+    (function(){
+      const modal    = document.getElementById("callModal");
+      const cmCall   = document.getElementById("cmCall");
+      const cmInfo   = document.getElementById("cmInfo");
+      const cmNum    = document.getElementById("cmNumber");
+      const cmCancel = document.getElementById("cmCancel");
+      if (!modal) return;
+
+      function formatNumber(href){
+        const digits = href.replace(/[^0-9]/g, "");
+        if (digits.length === 10){
+          return digits.slice(0,3) + "-" + digits.slice(3,6) + "-" + digits.slice(6);
+        }
+        return href.replace(/^tel:/i, "");
+      }
+
+      function openModal(telHref){
+        cmCall.setAttribute("href", telHref);
+        cmNum.textContent = formatNumber(telHref);
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      // Intercept every tel: link except the one inside the modal
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        if (modal.contains(link)) return;
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          openModal(link.getAttribute("href"));
+        });
+      });
+
+      cmCancel.addEventListener("click", closeModal);
+      modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+      cmCall.addEventListener("click", closeModal);
+      cmInfo.addEventListener("click", closeModal);
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
       });
     })();
 
