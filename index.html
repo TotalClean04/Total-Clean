@@ -1488,8 +1488,8 @@
           </div>
 
           <div class="form-grid">
-            <select name="service" id="serviceSelect">
-              <option value="">Service needed</option>
+            <select name="service" id="serviceSelect" required>
+              <option value="">Service needed *</option>
               <option>Water Mitigation</option>
               <option>Mold Remediation</option>
               <option>Fire Cleanup</option>
@@ -1683,11 +1683,12 @@
        Everything else is optional but sent if filled.
        ============================================================ */
     (function(){
-      const form    = document.getElementById("leadForm");
-      const nameEl  = document.getElementById("fName");
-      const phoneEl = document.getElementById("fPhone");
-      const errEl   = document.getElementById("formError");
-      const okEl    = document.getElementById("formSuccess");
+      const form     = document.getElementById("leadForm");
+      const nameEl   = document.getElementById("fName");
+      const phoneEl  = document.getElementById("fPhone");
+      const svcEl    = document.getElementById("serviceSelect");
+      const errEl    = document.getElementById("formError");
+      const okEl     = document.getElementById("formSuccess");
       if (!form) return;
 
       // ----- where leads should be delivered -----
@@ -1707,12 +1708,13 @@
         return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
       }
 
-      // Live-format the phone field as the user types
+      // Live-clear invalid state as the user interacts
       phoneEl.addEventListener("input", () => {
         phoneEl.value = formatPhoneLive(phoneEl.value);
         phoneEl.classList.remove("invalid");
       });
       nameEl.addEventListener("input", () => nameEl.classList.remove("invalid"));
+      if (svcEl) svcEl.addEventListener("change", () => svcEl.classList.remove("invalid"));
 
       function showError(msg){
         errEl.textContent = msg;
@@ -1732,6 +1734,7 @@
         let ok = true;
         const name  = nameEl.value.trim();
         const phone = digitsOnly(phoneEl.value);
+        const service = svcEl ? svcEl.value.trim() : "";
 
         if (name.length < 2){
           nameEl.classList.add("invalid");
@@ -1740,6 +1743,10 @@
         // US phone numbers: 10 digits (or 11 starting with 1)
         if (!(phone.length === 10 || (phone.length === 11 && phone[0] === "1"))){
           phoneEl.classList.add("invalid");
+          ok = false;
+        }
+        if (svcEl && !service){
+          svcEl.classList.add("invalid");
           ok = false;
         }
         return ok;
@@ -1751,7 +1758,7 @@
         okEl.hidden = true;
 
         if (!validate()){
-          showError("Please add your name and a valid phone number so we can call you back.");
+          showError("Please complete all required fields to submit your request.");
           return;
         }
 
