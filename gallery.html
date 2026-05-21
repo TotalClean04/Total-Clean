@@ -604,16 +604,6 @@
   <section>
     <div class="container">
 
-      <div class="filter-bar" role="tablist" aria-label="Filter gallery by service type">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="water">Water</button>
-        <button class="filter" data-filter="mold">Mold</button>
-        <button class="filter" data-filter="fire">Fire</button>
-        <button class="filter" data-filter="biohazard">Biohazard</button>
-      </div>
-
-      <div class="filter-count" id="filterCount"></div>
-
       <!--
         ============================================================
         PHOTO GALLERY — how to add or change photos
@@ -808,31 +798,8 @@
       });
     })();
 
-    /* ===== Filter buttons ===== */
-    const filters = document.querySelectorAll(".filter");
-    const photos  = document.querySelectorAll(".photo");
-    const countEl = document.getElementById("filterCount");
-
-    function applyFilter(category){
-      let shown = 0;
-      photos.forEach(p => {
-        const match = category === "all" || p.dataset.category === category;
-        p.hidden = !match;
-        if (match) shown++;
-      });
-      countEl.textContent = `Showing ${shown} ${shown === 1 ? "photo" : "photos"}` +
-                            (category === "all" ? "" : ` in ${category}`);
-    }
-
-    filters.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filters.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        applyFilter(btn.dataset.filter);
-      });
-    });
-
-    applyFilter("all");
+    /* ===== Photos collection (used by lightbox below) ===== */
+    const photos = document.querySelectorAll(".photo");
 
     /* ===== Lightbox ===== */
     const lb         = document.getElementById("lightbox");
