@@ -565,6 +565,34 @@
       resize:vertical;
     }
 
+    /* Required-field invalid state */
+    input.invalid,
+    select.invalid{
+      border-color:var(--red) !important;
+      background:rgba(214,31,38,.06) !important;
+    }
+
+    .form-error,
+    .form-success{
+      padding:.85rem 1rem;
+      border-radius:12px;
+      font-size:.94rem;
+      font-weight:600;
+      line-height:1.35;
+    }
+
+    .form-error{
+      background:rgba(214,31,38,.12);
+      border:1px solid rgba(214,31,38,.4);
+      color:#ffb4b8;
+    }
+
+    .form-success{
+      background:rgba(45,160,90,.14);
+      border:1px solid rgba(45,160,90,.45);
+      color:#a8e6c0;
+    }
+
     .contact-pills{
       display:flex;
       flex-wrap:wrap;
@@ -1448,15 +1476,15 @@
           Fast response • Professional documentation • Emergency support
         </p>
 
-        <form>
+        <form id="leadForm" novalidate>
           <div class="form-grid">
-            <input type="text" name="name" placeholder="Full name" />
-            <input type="tel" name="phone" placeholder="Phone number" />
+            <input type="text" name="name" id="fName" placeholder="Full name *" required autocomplete="name" />
+            <input type="tel" name="phone" id="fPhone" placeholder="Phone number *" required autocomplete="tel" inputmode="tel" />
           </div>
 
           <div class="form-grid">
-            <input type="email" name="email" placeholder="Email address" />
-            <input type="text" name="address" placeholder="Property address" />
+            <input type="email" name="email" placeholder="Email address" autocomplete="email" />
+            <input type="text" name="address" placeholder="Property address" autocomplete="street-address" />
           </div>
 
           <div class="form-grid">
@@ -1487,6 +1515,9 @@
           </select>
 
           <textarea name="message" placeholder="Tell us what happened..."></textarea>
+
+          <div id="formError" class="form-error" hidden></div>
+          <div id="formSuccess" class="form-success" hidden></div>
 
           <button type="submit" class="btn btn-primary">
             Submit Request
@@ -1647,12 +1678,111 @@
       showSlide(currentSlide);
     }, 4200);
 
-    const form = document.querySelector("form");
+    /* ===== Lead form validation & submission =====
+       Required fields: name + a valid US phone number.
+       Everything else is optional but sent if filled.
+       ============================================================ */
+    (function(){
+      const form    = document.getElementById("leadForm");
+      const nameEl  = document.getElementById("fName");
+      const phoneEl = document.getElementById("fPhone");
+      const errEl   = document.getElementById("formError");
+      const okEl    = document.getElementById("formSuccess");
+      if (!form) return;
 
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      alert("Thanks. Your request is ready. Please call one of our emergency lines or email totalclean150@gmail.com while we finish connecting this form.");
-    });
+      // ----- where leads should be delivered -----
+      // Set this to your Web3Forms / Formspree endpoint to receive
+      // submissions by email + SMS forwarding. While it's empty, the
+      // form validates and shows a success message but doesn't send.
+      // Setup steps are in the README I shared with you.
+      const FORM_ENDPOINT = ""; // e.g. "https://api.web3forms.com/submit"
+      const WEB3FORMS_KEY = ""; // your access key (Web3Forms only)
+
+      function digitsOnly(v){ return (v || "").replace(/[^0-9]/g, ""); }
+
+      function formatPhoneLive(v){
+        const d = digitsOnly(v).slice(0, 10);
+        if (d.length <= 3)  return d;
+        if (d.length <= 6)  return `(${d.slice(0,3)}) ${d.slice(3)}`;
+        return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+      }
+
+      // Live-format the phone field as the user types
+      phoneEl.addEventListener("input", () => {
+        phoneEl.value = formatPhoneLive(phoneEl.value);
+        phoneEl.classList.remove("invalid");
+      });
+      nameEl.addEventListener("input", () => nameEl.classList.remove("invalid"));
+
+      function showError(msg){
+        errEl.textContent = msg;
+        errEl.hidden = false;
+        okEl.hidden = true;
+        errEl.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+
+      function showSuccess(msg){
+        okEl.textContent = msg;
+        okEl.hidden = false;
+        errEl.hidden = true;
+        okEl.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+
+      function validate(){
+        let ok = true;
+        const name  = nameEl.value.trim();
+        const phone = digitsOnly(phoneEl.value);
+
+        if (name.length < 2){
+          nameEl.classList.add("invalid");
+          ok = false;
+        }
+        // US phone numbers: 10 digits (or 11 starting with 1)
+        if (!(phone.length === 10 || (phone.length === 11 && phone[0] === "1"))){
+          phoneEl.classList.add("invalid");
+          ok = false;
+        }
+        return ok;
+      }
+
+      form.addEventListener("submit", async function(e){
+        e.preventDefault();
+        errEl.hidden = true;
+        okEl.hidden = true;
+
+        if (!validate()){
+          showError("Please add your name and a valid phone number so we can call you back.");
+          return;
+        }
+
+        // Build the submission payload
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        // If a delivery endpoint is configured, send it. Otherwise we
+        // just confirm receipt locally so the form is usable now.
+        if (FORM_ENDPOINT){
+          try {
+            const body = WEB3FORMS_KEY
+              ? { ...data, access_key: WEB3FORMS_KEY, subject: "TotalClean — New service request" }
+              : data;
+            const res = await fetch(FORM_ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(body)
+            });
+            if (!res.ok) throw new Error("send failed");
+            showSuccess("Thanks — we got your request and will call you shortly at " + phoneEl.value + ".");
+            form.reset();
+          } catch (err){
+            showError("Couldn't send right now. Please call 786-768-6649 directly.");
+          }
+        } else {
+          // No endpoint yet — confirm locally
+          showSuccess("Thanks " + nameEl.value.trim().split(" ")[0] + " — we'll call you at " + phoneEl.value + " shortly. (Note: live delivery not yet configured.)");
+          form.reset();
+        }
+      });
+    })();
 
     /* =========================================================
        SERVICE CARDS  ->  fast-track to lead form
