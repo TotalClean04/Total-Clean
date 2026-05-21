@@ -417,77 +417,68 @@
         ============================================================
         PHOTO GALLERY — how to add or change photos
         ============================================================
-        Each .photo block needs THREE things, and that's it:
+        Each .photo block needs TWO things:
           1) data-category="water" | "mold" | "fire" | "biohazard"
              (decides which filter tab the photo appears under)
-          2) data-name="gallery1"   (the base filename — no extension)
-          3) alt text + label
+          2) <img src="images/gallery/yourphoto.jpg" alt="...">
 
-        FILE EXTENSIONS DON'T MATTER. The gallery automatically tries
-        every common image format until it finds one that exists, so
-        ALL of these will work the same way for "gallery1":
-            images/gallery/gallery1.jpg
-            images/gallery/gallery1.JPG
-            images/gallery/gallery1.jpeg
-            images/gallery/gallery1.png
-            images/gallery/gallery1.webp
-            images/gallery/gallery1.gif
+        File-naming convention (must match exactly, case-sensitive):
+          images/gallery/water-01.jpg, water-02.jpg, water-03.jpg
+          images/gallery/mold-01.jpg, mold-02.jpg, mold-03.jpg
+          images/gallery/fire-01.jpg, fire-02.jpg, fire-03.jpg
+          images/gallery/biohazard-01.jpg, biohazard-02.jpg, biohazard-03.jpg
 
-        Just upload your photo to images/gallery/ with the base name
-        matching the data-name (e.g. "gallery1.png" or "gallery1.JPG").
-        The page finds it automatically.
+        If a photo fails to load (missing or broken), it hides itself
+        cleanly thanks to onerror="this.style.display='none'".
 
-        Existing photos already in your repo with their current names
-        are NOT touched — this only changes how the page looks for them.
-
-        To add a new photo: duplicate any block, increment data-name,
-        set the right category + label + alt text. Done.
+        To add a new photo: copy any block, change the src, alt, and
+        data-category. The filter buttons pick it up automatically.
         ============================================================
       -->
       <div class="photo-grid" id="photoGrid">
 
         <!-- WATER -->
-        <div class="photo" data-category="water" data-name="gallery1">
-          <img alt="TotalClean LLC water mitigation project in South Florida">
+        <div class="photo" data-category="water">
+          <img src="images/gallery/water-01.jpg?v=1" alt="TotalClean LLC water mitigation project in South Florida" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="water" data-name="gallery2">
-          <img alt="TotalClean LLC water damage cleanup and drying">
+        <div class="photo" data-category="water">
+          <img src="images/gallery/water-02.jpg?v=1" alt="TotalClean LLC water damage cleanup and drying" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="water" data-name="gallery3">
-          <img alt="TotalClean LLC water extraction and restoration work">
+        <div class="photo" data-category="water">
+          <img src="images/gallery/water-03.jpg?v=1" alt="TotalClean LLC water extraction and restoration work" onerror="this.style.display='none'">
         </div>
 
         <!-- MOLD -->
-        <div class="photo" data-category="mold" data-name="gallery4">
-          <img alt="TotalClean LLC mold remediation project in South Florida">
+        <div class="photo" data-category="mold">
+          <img src="images/gallery/mold-01.jpg?v=1" alt="TotalClean LLC mold remediation project in South Florida" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="mold" data-name="gallery5">
-          <img alt="TotalClean LLC mold removal and containment">
+        <div class="photo" data-category="mold">
+          <img src="images/gallery/mold-02.jpg?v=1" alt="TotalClean LLC mold removal and containment" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="mold" data-name="gallery6">
-          <img alt="TotalClean LLC mold inspection and treatment">
+        <div class="photo" data-category="mold">
+          <img src="images/gallery/mold-03.jpg?v=1" alt="TotalClean LLC mold inspection and treatment" onerror="this.style.display='none'">
         </div>
 
         <!-- FIRE -->
-        <div class="photo" data-category="fire" data-name="gallery7">
-          <img alt="TotalClean LLC fire damage cleanup project">
+        <div class="photo" data-category="fire">
+          <img src="images/gallery/fire-01.jpg?v=1" alt="TotalClean LLC fire damage cleanup project" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="fire" data-name="gallery8">
-          <img alt="TotalClean LLC fire and smoke damage restoration">
+        <div class="photo" data-category="fire">
+          <img src="images/gallery/fire-02.jpg?v=1" alt="TotalClean LLC fire and smoke damage restoration" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="fire" data-name="gallery9">
-          <img alt="TotalClean LLC post-fire cleanup work">
+        <div class="photo" data-category="fire">
+          <img src="images/gallery/fire-03.jpg?v=1" alt="TotalClean LLC post-fire cleanup work" onerror="this.style.display='none'">
         </div>
 
         <!-- BIOHAZARD -->
-        <div class="photo" data-category="biohazard" data-name="gallery10">
-          <img alt="TotalClean LLC biohazard cleanup project">
+        <div class="photo" data-category="biohazard">
+          <img src="images/gallery/biohazard-01.jpg?v=1" alt="TotalClean LLC biohazard cleanup project" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="biohazard" data-name="gallery11">
-          <img alt="TotalClean LLC professional biohazard remediation">
+        <div class="photo" data-category="biohazard">
+          <img src="images/gallery/biohazard-02.jpg?v=1" alt="TotalClean LLC professional biohazard remediation" onerror="this.style.display='none'">
         </div>
-        <div class="photo" data-category="biohazard" data-name="gallery12">
-          <img alt="TotalClean LLC discreet biohazard cleanup work">
+        <div class="photo" data-category="biohazard">
+          <img src="images/gallery/biohazard-03.jpg?v=1" alt="TotalClean LLC discreet biohazard cleanup work" onerror="this.style.display='none'">
         </div>
 
       </div>
@@ -520,41 +511,6 @@
   </footer>
 
   <script>
-    /* ===== Auto image-format resolver =====
-       For each .photo block, try common image extensions in order
-       until one loads successfully. Lets you upload photos in any
-       format (.jpg, .JPG, .png, .webp, etc.) without changing code.
-       =========================================================== */
-    const IMAGE_EXTENSIONS = [
-      "jpg", "JPG", "jpeg", "JPEG",
-      "png", "PNG",
-      "webp", "WEBP",
-      "gif", "GIF"
-    ];
-
-    function resolvePhotoImage(photoEl){
-      const name = photoEl.dataset.name;
-      const img  = photoEl.querySelector("img");
-      if (!name || !img) return;
-
-      let i = 0;
-      function tryNext(){
-        if (i >= IMAGE_EXTENSIONS.length){
-          // Nothing matched — leave the placeholder visible.
-          img.style.display = "none";
-          return;
-        }
-        const ext = IMAGE_EXTENSIONS[i++];
-        img.src = `images/gallery/${name}.${ext}?v=1`;
-      }
-
-      img.addEventListener("error", tryNext);
-      img.addEventListener("load",  () => { img.style.display = "block"; });
-      tryNext();
-    }
-
-    document.querySelectorAll(".photo").forEach(resolvePhotoImage);
-
     /* ===== Filter buttons ===== */
     const filters = document.querySelectorAll(".filter");
     const photos  = document.querySelectorAll(".photo");
