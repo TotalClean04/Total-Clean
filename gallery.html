@@ -95,6 +95,41 @@
     .nav-links a:hover{color:var(--white)}
     .nav-links a.active{color:var(--white)}
 
+    /* ---- Hamburger menu (mobile only) ---- */
+    .nav-toggle{
+      display:none;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      color:var(--white);
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      cursor:pointer;
+      padding:0;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      transition:.2s ease;
+    }
+
+    .nav-toggle:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      background:var(--white);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -350,7 +385,107 @@
       align-items:center;
     }
 
-    /* ---- Sticky emergency button (mobile) ---- */
+    /* ---- Call confirmation modal ---- */
+    .call-modal{
+      position:fixed;
+      inset:0;
+      z-index:3000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(10px);
+      animation:cm-fade .22s ease;
+    }
+
+    .call-modal.open{display:flex}
+
+    @keyframes cm-fade{from{opacity:0}to{opacity:1}}
+
+    .call-modal-panel{
+      width:100%;
+      max-width:420px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:1.6rem;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+      animation:cm-pop .25s ease;
+    }
+
+    @keyframes cm-pop{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
+
+    .call-modal h3{
+      font-size:1.3rem;
+      font-weight:800;
+      margin:0 0 .35rem;
+      color:var(--white);
+      letter-spacing:-.01em;
+    }
+
+    .call-modal p{
+      color:var(--muted);
+      font-size:.95rem;
+      margin:0 0 1.2rem;
+      line-height:1.45;
+    }
+
+    .call-modal-number{
+      display:block;
+      color:var(--white);
+      font-weight:700;
+      font-size:1.05rem;
+      margin-top:.2rem;
+      letter-spacing:.3px;
+    }
+
+    .call-modal-actions{
+      display:grid;
+      gap:.55rem;
+    }
+
+    .call-modal .cm-btn{
+      width:100%;
+      border:0;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      font:inherit;
+      text-align:center;
+      transition:.2s ease;
+      line-height:1;
+      text-decoration:none;
+      display:block;
+    }
+
+    .cm-call{
+      background:var(--red);
+      color:var(--white);
+      font-weight:800;
+      box-shadow:0 10px 24px rgba(214,31,38,.32);
+    }
+
+    .cm-call:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+    .cm-info{
+      background:rgba(255,255,255,.06);
+      color:var(--white);
+      border:1px solid var(--line);
+    }
+
+    .cm-info:hover{background:rgba(255,255,255,.1)}
+
+    .cm-cancel{
+      background:transparent;
+      color:var(--muted);
+      font-weight:600;
+      margin-top:.1rem;
+    }
+
+    .cm-cancel:hover{color:var(--white)}
     .sticky-call{
       position:fixed;
       left:1rem;
@@ -368,7 +503,46 @@
     /* ---- Responsive ---- */
     @media (max-width:980px){
       .photo-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .nav-links a:not(.btn-primary){display:none}
+
+      .nav-toggle{display:flex}
+
+      .nav-links{
+        position:absolute;
+        top:100%;
+        right:1rem;
+        left:1rem;
+        flex-direction:column;
+        align-items:stretch;
+        gap:.25rem;
+        padding:.85rem;
+        background:rgba(17,18,22,.96);
+        backdrop-filter:blur(14px);
+        border:1px solid var(--line);
+        border-radius:18px;
+        box-shadow:0 24px 50px rgba(0,0,0,.45);
+        font-size:1rem;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-8px);
+        transition:opacity .22s ease, transform .22s ease;
+      }
+
+      .nav-links.open{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+
+      .nav-links a{
+        display:block;
+        padding:.85rem 1rem;
+        border-radius:12px;
+        color:var(--white);
+      }
+
+      .nav-links a:hover{
+        background:rgba(255,255,255,.05);
+      }
     }
 
     @media (max-width:720px){
@@ -400,13 +574,20 @@
         </div>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="index.html#services">Services</a>
+        <a href="index.html#insurance">Insurance</a>
         <a href="index.html#reviews">Reviews</a>
         <a href="gallery.html" class="active">Gallery</a>
+        <a href="index.html#about">About</a>
         <a href="index.html#faq">FAQ</a>
-        <a href="index.html#contact" class="btn btn-primary">Request Help</a>
       </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 
@@ -534,7 +715,99 @@
     Emergency Line • 786-768-6649
   </a>
 
+  <!-- Call confirmation modal (intercepts emergency call button) -->
+  <div class="call-modal" id="callModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+    <div class="call-modal-panel">
+      <h3 id="cmTitle">Before you call</h3>
+      <p>
+        You're about to dial our emergency line at
+        <span class="call-modal-number" id="cmNumber">786-768-6649</span>
+      </p>
+      <div class="call-modal-actions">
+        <a class="cm-btn cm-call" id="cmCall" href="tel:7867686649">📞 Call Emergency Line</a>
+        <a class="cm-btn cm-info" id="cmInfo" href="index.html#contact">Request Service</a>
+        <button class="cm-btn cm-cancel" id="cmCancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* ===== Hamburger menu ===== */
+    (function(){
+      const toggle = document.getElementById("navToggle");
+      const links  = document.getElementById("navLinks");
+      if (!toggle || !links) return;
+
+      function setOpen(open){
+        toggle.classList.toggle("open", open);
+        links.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      toggle.addEventListener("click", () => setOpen(!links.classList.contains("open")));
+      links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setOpen(false)));
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && links.classList.contains("open")) setOpen(false);
+      });
+      document.addEventListener("click", e => {
+        if (!links.classList.contains("open")) return;
+        if (links.contains(e.target) || toggle.contains(e.target)) return;
+        setOpen(false);
+      });
+    })();
+
+    /* ===== Call confirmation modal =====
+       Any <a href="tel:..."> link opens this confirmation popup first,
+       giving people a chance to choose Call vs Get More Info vs Cancel
+       before actually dialing.
+       ====================================================== */
+    (function(){
+      const modal   = document.getElementById("callModal");
+      const cmCall  = document.getElementById("cmCall");
+      const cmInfo  = document.getElementById("cmInfo");
+      const cmNum   = document.getElementById("cmNumber");
+      const cmCancel = document.getElementById("cmCancel");
+
+      function formatNumber(href){
+        const digits = href.replace(/[^0-9]/g, "");
+        if (digits.length === 10){
+          return digits.slice(0,3) + "-" + digits.slice(3,6) + "-" + digits.slice(6);
+        }
+        return href.replace(/^tel:/i, "");
+      }
+
+      function openModal(telHref){
+        cmCall.setAttribute("href", telHref);
+        cmNum.textContent = formatNumber(telHref);
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      // Intercept every tel: link except the one inside the modal itself
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        if (modal.contains(link)) return;
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          openModal(link.getAttribute("href"));
+        });
+      });
+
+      cmCancel.addEventListener("click", closeModal);
+      modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+      cmCall.addEventListener("click", closeModal);   // close after they tap Call
+      cmInfo.addEventListener("click", closeModal);   // close after they tap More Info
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+      });
+    })();
+
     /* ===== Filter buttons ===== */
     const filters = document.querySelectorAll(".filter");
     const photos  = document.querySelectorAll(".photo");
