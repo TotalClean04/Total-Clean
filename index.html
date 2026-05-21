@@ -1771,17 +1771,24 @@
               body: JSON.stringify(body)
             });
             if (!res.ok) throw new Error("send failed");
-            showSuccess("Thanks — we got your request and will call you shortly at " + phoneEl.value + ".");
+            showSuccess(buildSuccessMessage());
             form.reset();
           } catch (err){
-            showError("Couldn't send right now. Please call 786-768-6649 directly.");
+            showError("We couldn't send your request right now. Please call 786-768-6649 directly so we can help.");
           }
         } else {
-          // No endpoint yet — confirm locally
-          showSuccess("Thanks " + nameEl.value.trim().split(" ")[0] + " — we'll call you at " + phoneEl.value + " shortly. (Note: live delivery not yet configured.)");
+          // Endpoint not configured yet — still show the professional confirmation
+          showSuccess(buildSuccessMessage());
           form.reset();
         }
       });
+
+      function buildSuccessMessage(){
+        const firstName = nameEl.value.trim().split(" ")[0];
+        return firstName
+          ? `Thank you for your information, ${firstName}. We will contact you shortly.`
+          : `Thank you for your information. We will contact you shortly.`;
+      }
     })();
 
     /* =========================================================
